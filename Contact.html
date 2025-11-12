@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Portfolio Anas TAGUI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bleu-fonce': '#1D3557', 'bleu-moyen': '#457B9D',
+                        'bleu-clair': '#A8DADC', 'creme': '#F1FAEE', 'rouge-accent': '#E63946',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-creme text-bleu-fonce">
+
+    <!-- Bloc SVG pour les icônes -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="icon-linkedin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></symbol>
+        <symbol id="icon-github" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></symbol>
+        <symbol id="icon-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></symbol>
+        <symbol id="icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></symbol>
+        <symbol id="icon-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></symbol>
+        <!-- Icône TryHackMe ajoutée -->
+        <symbol id="icon-tryhackme" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.72 11.04c0-5.22-4.24-9.46-9.46-9.46S2.8 5.82 2.8 11.04s4.24 9.46 9.46 9.46 9.46-4.24 9.46-9.46z"/><path d="M16.38 15.12H7.62l4.38-6.72 4.38 6.72z"/></symbol>
+    </svg>
+
+    <!-- Header / Navigation -->
+    <header class="bg-bleu-fonce text-creme shadow-lg">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold">
+                <a href="index.html">Anas TAGUI</a>
+            </div>
+            <ul class="flex space-x-6 items-center">
+                <li><a href="index.html" class="hover:text-bleu-clair transition-colors">Accueil</a></li>
+                <li><a href="projets.html" class="hover:text-bleu-clair transition-colors">Projets</a></li>
+                <li><a href="parcours.html" class="hover:text-bleu-clair transition-colors">Parcours</a></li>
+                <li><a href="benevolat.html" class="hover:text-bleu-clair transition-colors">Bénévolat</a></li>
+                <li><a href="contact.html" class="hover:text-bleu-clair transition-colors">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content - Page Contact -->
+    <main class="container mx-auto px-6 py-16" style="min-height: 70vh;">
+        
+        <div class="text-center mb-16 max-w-3xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-bleu-fonce">Me Contacter</h1>
+            <p class="text-lg text-bleu-moyen mt-4">
+                Je suis à votre disposition pour toute opportunité d'alternance ou pour échanger sur mes projets et compétences.
+            </p>
+        </div>
+
+        <div class="bg-white p-8 md:p-12 rounded-xl shadow-lg max-w-4xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                
+                <!-- Infos de contact -->
+                <div class="space-y-6">
+                    <h2 class="text-3xl font-bold text-bleu-fonce">Informations</h2>
+                    
+                    <div class="flex items-center space-x-4">
+                        <svg class="w-8 h-8 text-bleu-moyen flex-shrink-0"><use href="#icon-mail"></use></svg>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-600">Email</h3>
+                            <a href="mailto:atagui.ir2027@esaip.org" class="text-lg text-bleu-fonce hover:text-rouge-accent break-all">atagui.ir2027@esaip.org</a>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4">
+                        <svg class="w-8 h-8 text-bleu-moyen flex-shrink-0"><use href="#icon-phone"></use></svg>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-600">Téléphone</h3>
+                            <a href="tel:+33780833737" class="text-lg text-bleu-fonce hover:text-rouge-accent">07 80 83 37 37</a>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4">
+                        <svg class="w-8 h-8 text-bleu-moyen flex-shrink-0"><use href="#icon-map"></use></svg>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-600">Localisation</h3>
+                            <p class="text-lg text-bleu-fonce">Angers, France</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Liens Sociaux -->
+                <div class="space-y-6">
+                    <h2 class="text-3xl font-bold text-bleu-fonce">Réseaux Professionnels</h2>
+                    <p class="text-gray-700">Retrouvez-moi sur LinkedIn et consultez mes projets sur GitHub.</p>
+                    
+                    <!-- A REMPLACER : Mettez vos vrais liens -->
+                    <a href="https://www.linkedin.com/in/anas-tagui-7b0599241/" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-4 p-4 bg-creme rounded-lg hover:shadow-md hover:bg-bleu-clair transition-all group">
+                        <svg class="w-10 h-10 text-bleu-fonce group-hover:text-white"><use href="#icon-linkedin"></use></svg>
+                        <div>
+                            <h3 class="text-xl font-bold text-bleu-fonce group-hover:text-white">LinkedIn</h3>
+                            <p class="text-bleu-moyen group-hover:text-white">Voir mon profil professionnel</p>
+                        </div>
+                    </a>
+                    
+                    <a href="https://github.com/taguianas" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-4 p-4 bg-creme rounded-lg hover:shadow-md hover:bg-bleu-clair transition-all group">
+                        <svg class="w-10 h-10 text-bleu-fonce group-hover:text-white"><use href="#icon-github"></use></svg>
+                        <div>
+                            <h3 class="text-xl font-bold text-bleu-fonce group-hover:text-white">GitHub</h3>
+                            <p class="text-bleu-moyen group-hover:text-white">Explorer mes dépôts de code</p>
+                        </div>
+                    </a>
+
+                    <!-- Lien TryHackMe ajouté -->
+                    <!-- A REMPLACER : Mettez votre vrai lien TryHackMe -->
+                    <a href="https://tryhackme.com/p/anastagui" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-4 p-4 bg-creme rounded-lg hover:shadow-md hover:bg-bleu-clair transition-all group">
+                        <svg class="w-10 h-10 text-bleu-fonce group-hover:text-white"><use href="#icon-tryhackme"></use></svg>
+                        <div>
+                            <h3 class="text-xl font-bold text-bleu-fonce group-hover:text-white">TryHackMe</h3>
+                            <p class="text-bleu-moyen group-hover:text-white">Voir mon profil de challenges</p>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-bleu-fonce text-creme mt-24 py-10">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://www.linkedin.com/in/anas-tagui-7b0599241/" target="_blank" rel="noopener noreferrer" class="hover:text-bleu-clair transition-colors" title="LinkedIn"><svg class="w-8 h-8"><use href="#icon-linkedin"></use></svg></a>
+                <a href="https://github.com/taguianas" target="_blank" rel="noopener noreferrer" class="hover:text-bleu-clair transition-colors" title="GitHub"><svg class="w-8 h-8"><use href="#icon-github"></use></svg></a>
+            </div>
+            <p>&copy; 2025 Anas TAGUI. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
