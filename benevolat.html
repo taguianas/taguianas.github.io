@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engagements - Portfolio Anas TAGUI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bleu-fonce': '#1D3557', 'bleu-moyen': '#457B9D',
+                        'bleu-clair': '#A8DADC', 'creme': '#F1FAEE', 'rouge-accent': '#E63946',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-creme text-bleu-fonce">
+
+    <!-- Bloc SVG pour les icônes -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="icon-linkedin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></symbol>
+        <symbol id="icon-github" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></symbol>
+        <symbol id="icon-tryhackme" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.72 11.04c0-5.22-4.24-9.46-9.46-9.46S2.8 5.82 2.8 11.04s4.24 9.46 9.46 9.46 9.46-4.24 9.46-9.46z"/><path d="M16.38 15.12H7.62l4.38-6.72 4.38 6.72z"/></symbol>
+        <symbol id="icon-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></symbol>
+        <symbol id="icon-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></symbol>
+    </svg>
+
+    <!-- Header / Navigation -->
+    <header class="bg-bleu-fonce text-creme shadow-lg">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold">
+                <a href="index.html">Anas TAGUI</a>
+            </div>
+            <ul class="flex space-x-6 items-center">
+                <li><a href="index.html" class="hover:text-bleu-clair transition-colors">Accueil</a></li>
+                <li><a href="projets.html" class="hover:text-bleu-clair transition-colors">Projets</a></li>
+                <li><a href="parcours.html" class="hover:text-bleu-clair transition-colors">Parcours</a></li>
+                <li><a href="benevolat.html" class="hover:text-bleu-clair transition-colors">Bénévolat</a></li>
+                <li><a href="contact.html" class="hover:text-bleu-clair transition-colors">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content - Page Bénévolat -->
+    <main class="container mx-auto px-6 py-16">
+        
+        <div class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-bleu-fonce">Mes Engagements</h1>
+            <p class="text-lg text-bleu-moyen mt-4">Allier compétences techniques et engagement citoyen.</p>
+        </div>
+
+        <!-- Grille des engagements -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+
+            <!-- Engagement 1: Snooker App -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl flex flex-col">
+                <img src="https://placehold.co/600x400/457B9D/F1FAEE?text=Snooker+Shoot-Out+App" alt="Illustration application Snooker" class="w-full h-48 object-cover">
+                <div class="p-6 flex flex-col flex-grow">
+                    <h3 class="text-2xl font-bold text-bleu-fonce mb-3">Application Web - Snooker Shoot-Out</h3>
+                    <p class="text-gray-700 mb-4 flex-grow">
+                        Développement d'une application web en <strong>React.js</strong> pour le club de snooker (affilié FFB) afin de gérer les tournois "Shoot-Out". L'outil gère le chronomètre de match et de tir, le score, et les fautes en temps réel avec une interface dynamique.
+                    </p>
+                    <div class="mb-6">
+                        <span class="inline-block bg-purple-100 text-purple-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Bénévolat</span>
+                        <!-- Tags mis à jour -->
+                        <span class="inline-block bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">React.js</span>
+                        <span class="inline-block bg-yellow-100 text-yellow-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">JavaScript (ES6+)</span>
+                        <span class="inline-block bg-green-100 text-green-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Web Audio API</span>
+                    </div>
+                    <div class="mt-auto">
+                        <!-- A REMPLACER : Mettez le lien vers votre application -->
+                        <a href="https://shootoutangers.netlify.app/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-bleu-moyen font-semibold hover:text-rouge-accent transition-colors">
+                            <svg class="w-5 h-5 mr-2"><use href="#icon-link"></use></svg>
+                            Voir l'application
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Engagement 2: Cop1 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl flex flex-col">
+                <img src="https://placehold.co/600x400/A8DADC/1D3557?text=Cop1+Angers" alt="Illustration Cop1" class="w-full h-48 object-cover">
+                <div class="p-6 flex flex-col flex-grow">
+                    <h3 class="text-2xl font-bold text-bleu-fonce mb-3">Bénévole Distribution Alimentaire</h3>
+                    <p class="text-gray-700 mb-4 flex-grow">
+                        Participation active aux opérations de distribution alimentaire pour l'association <strong>Cop1 - Solidarités Étudiantes</strong> à Angers. Aide à la logistique, accueil et distribution des denrées aux étudiants.
+                    </p>
+                    <div class="mb-6">
+                        <span class="inline-block bg-purple-100 text-purple-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Bénévolat</span>
+                        <span class="inline-block bg-red-100 text-red-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Engagement Social</span>
+                        <span class="inline-block bg-gray-200 text-gray-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Angers</span>
+                    </div>
+                    <div class="mt-auto">
+                        <span class="flex items-center text-gray-500">
+                            <svg class="w-5 h-5 mr-2"><use href="#icon-heart"></use></svg>
+                            Engagement associatif
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-bleu-fonce text-creme mt-24 py-10">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://www.linkedin.com/in/anas-tagui-7b0599241/" target="_blank" rel="noopener noreferrer" class="hover:text-bleu-clair transition-colors" title="LinkedIn"><svg class="w-8 h-8"><use href="#icon-linkedin"></use></svg></a>
+                <a href="https://github.com/taguianas" target="_blank" rel="noopener noreferrer" class="hover:text-bleu-clair transition-colors" title="GitHub"><svg class="w-8 h-8"><use href="#icon-github"></use></svg></a>
+            </div>
+            <p>&copy; 2025 Anas TAGUI. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

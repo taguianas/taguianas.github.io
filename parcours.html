@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Parcours - Portfolio Anas TAGUI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bleu-fonce': '#1D3557', 'bleu-moyen': '#457B9D',
+                        'bleu-clair': '#A8DADC', 'creme': '#F1FAEE', 'rouge-accent': '#E63946',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-creme text-bleu-fonce">
+
+    <!-- Bloc SVG pour les icônes -->
+    <svg xmlns="http://www.w.org/2000/svg" style="display: none;">
+        <symbol id="icon-linkedin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></symbol>
+        <symbol id="icon-github" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></symbol>
+        <symbol id="icon-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></symbol>
+        <symbol id="icon-graduation" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3.33 1.67 6.67 1.67 10 0v-5"></path></symbol>
+        <!-- Icône TryHackMe ajoutée -->
+        <symbol id="icon-tryhackme" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.72 11.04c0-5.22-4.24-9.46-9.46-9.46S2.8 5.82 2.8 11.04s4.24 9.46 9.46 9.46 9.46-4.24 9.46-9.46z"/><path d="M16.38 15.12H7.62l4.38-6.72 4.38 6.72z"/></symbol>
+    </svg>
+
+    <!-- Header / Navigation -->
+    <header class="bg-bleu-fonce text-creme shadow-lg">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold">
+               <a href="index.html">Anas TAGUI</a>
+            </div>
+            <ul class="flex space-x-6 items-center">
+                <li><a href="index.html" class="hover:text-bleu-clair transition-colors">Accueil</a></li>
+                <li><a href="projets.html" class="hover:text-bleu-clair transition-colors">Projets</a></li>
+                <li><a href="parcours.html" class="hover:text-bleu-clair transition-colors">Parcours</a></li>
+                <li><a href="benevolat.html" class="hover:text-bleu-clair transition-colors">Bénévolat</a></li>
+                <li><a href="contact.html" class="hover:text-bleu-clair transition-colors">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content - Page Parcours -->
+    <main class="container mx-auto px-6 py-16">
+        
+        <div class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-bleu-fonce">Mon Parcours</h1>
+            <p class="text-lg text-bleu-moyen mt-4">Expériences, formations et compétences clés.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-16">
+
+            <!-- Colonne Principale: Expériences et Formations -->
+            <div class="lg:col-span-2">
+                
+                <!-- Section Expériences -->
+                <section class="mb-16">
+                    <h2 class="flex items-center text-3xl font-bold text-bleu-fonce mb-8">
+                        <svg class="w-8 h-8 mr-3 text-bleu-moyen"><use href="#icon-briefcase"></use></svg>
+                        Expériences Professionnelles
+                    </h2>
+                    <div class="space-y-10 border-l-2 border-bleu-clair pl-8 relative">
+                        
+                        <!-- Expérience 1 -->
+                        <div class="relative">
+                            <span class="absolute -left-10 h-4 w-4 rounded-full bg-bleu-moyen border-4 border-creme"></span>
+                            <p class="text-sm font-semibold text-bleu-moyen">Juillet 2025 - Août 2025 (2 mois)</p>
+                            <h3 class="text-2xl font-bold text-bleu-fonce mt-1">Technicien Fibre Optique (Stage)</h3>
+                            <p class="text-lg font-medium text-gray-700">Convergence (Partenaire Orange)</p>
+                            <ul class="list-disc list-inside mt-3 text-gray-700 space-y-1">
+                                <li>Installation et dépannage de réseaux fibre optique (FTTH) sur le terrain.</li>
+                                <li>Configuration des équipements et support technique auprès des clients.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Expérience 2 -->
+                        <div class="relative">
+                            <span class="absolute -left-10 h-4 w-4 rounded-full bg-bleu-moyen border-4 border-creme"></span>
+                            <p class="text-sm font-semibold text-bleu-moyen">Juin 2023 - Septembre 2023 (4 mois)</p>
+                            <h3 class="text-2xl font-bold text-bleu-fonce mt-1">Technicien Informatique (Stage)</h3>
+                            <p class="text-lg font-medium text-gray-700">Ministère de l'Equipement, du Transport, de la Logistique</p>
+                            <ul class="list-disc list-inside mt-3 text-gray-700 space-y-1">
+                                <li>Installation et configuration des systèmes d'exploitation et des logiciels.</li>
+                                <li>Formatage et optimisation des performances des ordinateurs.</li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </section>
+
+                <!-- Section Formations -->
+                <section>
+                    <h2 class="flex items-center text-3xl font-bold text-bleu-fonce mb-8">
+                        <svg class="w-8 h-8 mr-3 text-bleu-moyen"><use href="#icon-graduation"></use></svg>
+                        Formations
+                    </h2>
+                    <div class="space-y-10 border-l-2 border-bleu-clair pl-8 relative">
+
+                        <!-- Formation 1 -->
+                        <div class="relative">
+                            <span class="absolute -left-10 h-4 w-4 rounded-full bg-bleu-moyen border-4 border-creme"></span>
+                            <p class="text-sm font-semibold text-bleu-moyen">2024 - 2027 (en cours)</p>
+                            <h3 class="text-2xl font-bold text-bleu-fonce mt-1">Cycle d'Ingénieur Informatique</h3>
+                            <p class="text-lg font-medium text-gray-700">ESAIP, Angers, France</p>
+                            <p class="mt-2 text-gray-700">Spécialisation en Cybersécurité et Réseaux.</p>
+                        </div>
+                        
+                        <!-- Formation 2 -->
+                        <div class="relative">
+                            <span class="absolute -left-10 h-4 w-4 rounded-full bg-bleu-moyen border-4 border-creme"></span>
+                            <p class="text-sm font-semibold text-bleu-moyen">Février 2025 - Juillet 2025</p>
+                            <h3 class="text-2xl font-bold text-bleu-fonce mt-1">Échange Universitaire</h3>
+                            <p class="text-lg font-medium text-gray-700">Politechnika Warszawska, Varsovie, Pologne</p>
+                            <p class="mt-2 text-gray-700">Focus sur l'informatique et la sécurité de l'information.</p>
+                        </div>
+
+                    </div>
+                </section>
+            </div>
+
+            <!-- Colonne Latérale: Compétences -->
+            <aside class="lg:col-span-1 space-y-10">
+                
+                <!-- Compétences Techniques -->
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-bleu-fonce mb-4">Compétences Techniques</h3>
+                    
+                    <h4 class="font-bold text-bleu-moyen mt-4">Cybersécurité</h4>
+                    <p class="text-gray-700">SIEM (Wazuh), SOAR (TheHive, Shuffle), Gestion des accès, Détection d'intrusions.</p>
+                    
+                    <h4 class="font-bold text-bleu-moyen mt-4">Réseaux</h4>
+                    <p class="text-gray-700">Installation/dépannage FTTH, Administration réseaux, Configuration équipements, Wireshark.</p>
+                    
+                    <h4 class="font-bold text-bleu-moyen mt-4">Systèmes</h4>
+                    <p class="text-gray-700">Windows & Linux (Installation, Administration, Optimisation), VirtualBox.</p>
+                    
+                    <h4 class="font-bold text-bleu-moyen mt-4">Développement</h4>
+                    <p class="text-gray-700">Python, HTML, CSS, MySQL, Java, Bash.</p>
+                </div>
+
+                <!-- Compétences Comportementales -->
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-bleu-fonce mb-4">Savoir-être</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2">
+                        <li>Autonomie et initiative (projet personnel)</li>
+                        <li>Relation client (support technique)</li>
+                        <li>Curiosité et apprentissage continu</li>
+                        <li>Résolution de problèmes</li>
+                        <li>Analyse et diagnostic</li>
+                        <li>Adaptabilité</li>
+                    </ul>
+                </div>
+
+                <!-- Langues -->
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-bleu-fonce mb-4">Langues</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2">
+                        <li><strong>Arabe :</strong> Langue maternelle</li>
+                        <li><strong>Français :</strong> Courant</li>
+                        <li><strong>Anglais :</strong> Courant</li>
+                        <li><strong>Espagnol :</strong> Intermédiaire</li>
+                    </ul>
+                </div>
+
+                <!-- Section Auto-formation ajoutée -->
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-bleu-fonce mb-4">Auto-formation</h3>
+                    <p class="text-gray-700 mb-4">Je renforce constamment mes compétences pratiques sur des plateformes de cybersécurité.</p>
+                    <!-- A REMPLACER : Mettez votre vrai lien TryHackMe -->
+                    <a href="https://tryhackme.com/p/anastagui" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-3 p-4 bg-creme rounded-lg hover:shadow-md hover:bg-bleu-clair transition-all group">
+                        <svg class="w-10 h-10 text-bleu-fonce group-hover:text-white"><use href="#icon-tryhackme"></use></svg>
+                        <div>
+                            <h4 class="text-lg font-bold text-bleu-fonce group-hover:text-white">TryHackMe</h4>
+                            <p class="text-bleu-moyen group-hover:text-white">Voir mon profil public</p>
+                        </div>
+                    </a>
+                </div>
+
+            </aside>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-bleu-fonce text-creme mt-24 py-10">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://www.linkedin.com/in/anas-tagui-7b0599241/" target="_blank" rel="noopener noreferrer" class="hover:text-bleu-clair transition-colors" title="LinkedIn"><svg class="w-8 h-8"><use href="#icon-linkedin"></use></svg></a>
+                <a href="https://github.com/taguianas" target="_blank" rel="noopener noreferrer" class="hover:text-bleu-clair transition-colors" title="GitHub"><svg class="w-8 h-8"><use href="#icon-github"></use></svg></a>
+            </div>
+            <p>&copy; 2025 Anas TAGUI. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
