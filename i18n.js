@@ -153,6 +153,12 @@ window.translations = {
     'form.error'         : 'Erreur lors de l\'envoi. Contactez-moi directement par email.',
     'copy.ok'            : 'Copié !',
 
+    /* --- FOOTER --- */
+    'footer.tagline'    : 'Ingénieur cybersécurité en devenir. Passionné par la sécurité offensive et défensive.',
+    'footer.nav'        : 'Navigation',
+    'footer.contact.lbl': 'Contact',
+    'footer.avail'      : 'Disponible pour alternance (sept. 2026)',
+
     /* --- CERTIFICATIONS --- */
     'parcours.certs'  : 'Certifications',
     'cert.link'       : 'Voir le diplôme',
@@ -308,6 +314,12 @@ window.translations = {
     'form.success'       : 'Message sent! I will reply as soon as possible.',
     'form.error'         : 'Error sending message. Contact me directly by email.',
     'copy.ok'            : 'Copied!',
+
+    /* --- FOOTER --- */
+    'footer.tagline'    : 'Aspiring cybersecurity engineer. Passionate about offensive and defensive security.',
+    'footer.nav'        : 'Navigation',
+    'footer.contact.lbl': 'Contact',
+    'footer.avail'      : 'Available for apprenticeship (Sept. 2026)',
 
     /* --- CERTIFICATIONS --- */
     'parcours.certs'  : 'Certifications',
