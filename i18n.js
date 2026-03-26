@@ -159,7 +159,7 @@ window.translations = {
     'cert.wip'        : 'Formations en cours',
     'cert.inprog'     : 'En cours',
     'cert.ceh.name'   : 'CEH - Certified Ethical Hacker',
-    'cert.ceh.org'    : 'EC-Council (préparation via TryHackMe)',
+    'cert.ceh.org'    : 'EC-Council',
   },
 
   en: {
