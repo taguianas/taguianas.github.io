@@ -1,8 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <title>Mes Projets - Portfolio Anas TAGUI</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -43,6 +44,17 @@
         .dark .border-bleu-clair { border-color: #2d6a8a !important; }
         .dark .border-creme { border-color: #0f172a !important; }
         .dark .text-green-600 { color: #4ade80 !important; }
+        /* Back to top button */
+        #back-to-top { opacity: 0; pointer-events: none; transform: translateY(12px); transition: opacity 0.3s ease, transform 0.3s ease; }
+        #back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+        /* Filter buttons */
+        .filter-btn { transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease; }
+        .filter-btn.active { background-color: #1D3557 !important; color: #F1FAEE !important; border-color: #1D3557 !important; }
+        .dark .filter-btn:not(.active) { background-color: #1e293b; color: #94a3b8; border-color: #457B9D; }
+        .dark .filter-btn.active { background-color: #457B9D !important; color: #F1FAEE !important; border-color: #457B9D !important; }
+        /* Card filter animation */
+        .project-card { transition: opacity 0.25s ease, transform 0.25s ease, opacity 0.6s ease, transform 0.6s ease; }
+        .project-card.filtered-out { display: none; }
     </style>
     <script>
         tailwind.config = {
@@ -116,11 +128,19 @@
             <p class="text-lg text-bleu-moyen mt-4">Voici une sélection de projets qui démontrent mes compétences techniques.</p>
         </div>
 
+        <!-- Boutons de filtre -->
+        <div class="flex justify-center flex-wrap gap-3 mb-12">
+            <button onclick="filterProjects('tous')" data-filter="tous" class="filter-btn active px-5 py-2 rounded-full font-semibold text-sm border border-bleu-fonce bg-bleu-fonce text-creme shadow-sm">Tous</button>
+            <button onclick="filterProjects('cybersecurite')" data-filter="cybersecurite" class="filter-btn px-5 py-2 rounded-full font-semibold text-sm border border-bleu-moyen bg-white text-bleu-fonce shadow-sm hover:bg-bleu-moyen hover:text-white">Cybersécurité</button>
+            <button onclick="filterProjects('developpement')" data-filter="developpement" class="filter-btn px-5 py-2 rounded-full font-semibold text-sm border border-bleu-moyen bg-white text-bleu-fonce shadow-sm hover:bg-bleu-moyen hover:text-white">Développement</button>
+            <button onclick="filterProjects('ctf')" data-filter="ctf" class="filter-btn px-5 py-2 rounded-full font-semibold text-sm border border-bleu-moyen bg-white text-bleu-fonce shadow-sm hover:bg-bleu-moyen hover:text-white">CTF / Labs</button>
+        </div>
+
         <!-- Grille des projets -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10" id="projects-grid">
 
             <!-- Projet 1: PhishGuard-AI (projet phare) -->
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl flex flex-col">
+            <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl flex flex-col" data-category="cybersecurite developpement">
                 <div class="relative">
                     <img src="screenshot-phishguard.jpeg" alt="Illustration PhishGuard AI" class="w-full h-48 object-cover">
                     <div class="absolute top-2 left-2 bg-rouge-accent text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider shadow-md">
@@ -152,8 +172,33 @@
                 </div>
             </div>
 
+            <!-- Projet 1b: PhishGuard Extension -->
+            <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl flex flex-col" data-category="cybersecurite developpement">
+                <div class="relative">
+                    <img src="https://opengraph.githubassets.com/1/taguianas/PhishGuard-extention" alt="Illustration PhishGuard Extension" class="w-full h-48 object-cover">
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <h3 class="text-2xl font-bold text-bleu-fonce mb-3">PhishGuard Extension</h3>
+                    <p class="text-gray-700 mb-4 flex-grow">
+                        Extension Chrome de détection de phishing en temps réel directement dans vos emails. Moteur heuristique de <strong>21 points</strong> combiné à 5 couches de threat intelligence (OpenPhish, Google Safe Browsing, PhishTank...). Analyse 100% locale, zéro transmission de données.
+                    </p>
+                    <div class="mb-6">
+                        <span class="inline-block bg-red-100 text-red-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Cybersécurité</span>
+                        <span class="inline-block bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Chrome Extension</span>
+                        <span class="inline-block bg-gray-200 text-gray-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">JavaScript</span>
+                        <span class="inline-block bg-purple-100 text-purple-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Threat Intel</span>
+                    </div>
+                    <div class="mt-auto">
+                        <a href="https://github.com/taguianas/PhishGuard-extention" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-bleu-moyen font-semibold hover:text-rouge-accent transition-colors">
+                            <svg class="w-5 h-5 mr-2"><use href="#icon-github"></use></svg>
+                            Voir sur GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
             <!-- Projet 2: net-Tools -->
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl flex flex-col">
+            <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl flex flex-col" data-category="developpement">
                 <img src="screenshot-nettools.jpeg" alt="Illustration NetTools" class="w-full h-48 object-cover">
                 <div class="p-6 flex flex-col flex-grow">
                     <h3 class="text-2xl font-bold text-bleu-fonce mb-3">NetTools : Boîte à Outils Réseau</h3>
@@ -179,8 +224,34 @@
                 </div>
             </div>
 
+            <!-- Projet 2b: Kali MCP Server -->
+            <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl flex flex-col" data-category="cybersecurite developpement">
+                <div class="relative">
+                    <img src="https://opengraph.githubassets.com/1/taguianas/kali-mcp-server" alt="Illustration Kali MCP Server" class="w-full h-48 object-cover">
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <h3 class="text-2xl font-bold text-bleu-fonce mb-3">Kali MCP Server</h3>
+                    <p class="text-gray-700 mb-4 flex-grow">
+                        Serveur <strong>MCP (Model Context Protocol)</strong> Dockerisé exposant 18+ outils Kali Linux (nmap, nikto, sqlmap...) à des clients IA comme Claude Code. Permet d'exécuter des tests de pénétration en langage naturel via <strong>FastMCP 3.x</strong>.
+                    </p>
+                    <div class="mb-6">
+                        <span class="inline-block bg-red-100 text-red-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Pentest</span>
+                        <span class="inline-block bg-gray-200 text-gray-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Python</span>
+                        <span class="inline-block bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Docker</span>
+                        <span class="inline-block bg-purple-100 text-purple-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">MCP / IA</span>
+                        <span class="inline-block bg-gray-200 text-gray-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Kali Linux</span>
+                    </div>
+                    <div class="mt-auto">
+                        <a href="https://github.com/taguianas/kali-mcp-server" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-bleu-moyen font-semibold hover:text-rouge-accent transition-colors">
+                            <svg class="w-5 h-5 mr-2"><use href="#icon-github"></use></svg>
+                            Voir sur GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
             <!-- Projet 3: SOC Virtuel -->
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl flex flex-col relative">
+            <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl flex flex-col relative" data-category="cybersecurite">
                 <img src="screenshot-soc.jpeg" alt="Illustration projet SOC" class="w-full h-48 object-cover">
                 <div class="absolute top-2 right-2 bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider shadow-md">
                     En cours
@@ -206,7 +277,7 @@
             </div>
 
             <!-- Projet 4: CTF - TryHackMe Operation Endgame -->
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl flex flex-col">
+            <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl flex flex-col" data-category="ctf cybersecurite">
                 <img src="screenshot-ctf.jpeg" alt="Illustration CTF Operation Endgame" class="w-full h-48 object-cover">
                 <div class="p-6 flex flex-col flex-grow">
                     <h3 class="text-2xl font-bold text-bleu-fonce mb-3">CTF : Operation Endgame (AD)</h3>
@@ -230,7 +301,7 @@
             </div>
 
             <!-- Projet 5: Lab Secure Coding / Web Security -->
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl flex flex-col">
+            <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl flex flex-col" data-category="ctf cybersecurite">
                 <img src="screenshot-labs.jpeg" alt="Illustration Web Security Labs" class="w-full h-48 object-cover">
                 <div class="p-6 flex flex-col flex-grow">
                     <h3 class="text-2xl font-bold text-bleu-fonce mb-3">Labs Sécurité Web (OWASP)</h3>
@@ -253,8 +324,34 @@
                 </div>
             </div>
 
-            <!-- Projet 6: RedTeam Shell Framework -->
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-3xl flex flex-col border-2 border-transparent hover:border-orange-400 relative">
+            <!-- Projet 6: Lab Smurf Attack -->
+            <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl flex flex-col" data-category="ctf cybersecurite">
+                <div class="relative">
+                    <img src="https://opengraph.githubassets.com/1/taguianas/lab-smurf-attack" alt="Illustration Lab Smurf Attack" class="w-full h-48 object-cover">
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <h3 class="text-2xl font-bold text-bleu-fonce mb-3">Lab : Smurf Attack (DoS ICMP)</h3>
+                    <p class="text-gray-700 mb-4 flex-grow">
+                        Lab réseau en environnement virtualisé démontrant une attaque <strong>ICMP Amplification DoS</strong> (Smurf). Utilisation de <strong>hping3</strong>, 4 amplificateurs Knoppix et une victime Windows IIS. Analyse de l'impact selon la bande passante et mise en oeuvre de contre-mesures.
+                    </p>
+                    <div class="mb-6">
+                        <span class="inline-block bg-red-100 text-red-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">DoS</span>
+                        <span class="inline-block bg-orange-100 text-orange-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">hping3</span>
+                        <span class="inline-block bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Réseaux</span>
+                        <span class="inline-block bg-gray-200 text-gray-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Kali Linux</span>
+                        <span class="inline-block bg-teal-100 text-teal-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">ICMP</span>
+                    </div>
+                    <div class="mt-auto">
+                        <a href="https://github.com/taguianas/lab-smurf-attack" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-bleu-moyen font-semibold hover:text-rouge-accent transition-colors">
+                            <svg class="w-5 h-5 mr-2"><use href="#icon-github"></use></svg>
+                            Voir sur GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projet 7: RedTeam Shell Framework -->
+            <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-3xl flex flex-col border-2 border-transparent hover:border-orange-400 relative" data-category="cybersecurite">
                 <div class="relative">
                     <img src="screenshot-redteam.jpeg" alt="Illustration RedTeam Shell Framework" class="w-full h-48 object-cover">
                     <div class="absolute top-2 right-2 bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider shadow-md">
@@ -282,7 +379,7 @@
             </div>
 
             <!-- Projet 7: Terminal Portfolio -->
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl flex flex-col">
+            <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl flex flex-col" data-category="developpement">
                 <img src="screenshot-terminal.jpeg" alt="Illustration Terminal Portfolio" class="w-full h-48 object-cover">
                 <div class="p-6 flex flex-col flex-grow">
                     <h3 class="text-2xl font-bold text-bleu-fonce mb-3">Terminal Portfolio</h3>
@@ -308,7 +405,7 @@
             </div>
 
             <!-- Projet 8: Encryption App -->
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl flex flex-col">
+            <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl flex flex-col" data-category="developpement cybersecurite">
                 <img src="screenshot-encryption.jpeg" alt="Illustration Encryption App" class="w-full h-48 object-cover">
                 <div class="p-6 flex flex-col flex-grow">
                     <h3 class="text-2xl font-bold text-bleu-fonce mb-3">Encryption App</h3>
@@ -335,7 +432,7 @@
             </div>
 
             <!-- Projet 9: Scripts d'Automatisation -->
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl flex flex-col relative">
+            <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl flex flex-col relative" data-category="developpement">
                 <img src="screenshot-scripts.jpeg" alt="Illustration projet Admin" class="w-full h-48 object-cover">
                 <div class="absolute top-2 right-2 bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider shadow-md">
                     En cours
@@ -357,12 +454,15 @@
                             <svg class="w-5 h-5 mr-2"><use href="#icon-github"></use></svg>
                             Voir sur GitHub
                         </a>
+                         <div class="absolute top-2 right-2 bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider shadow-md">
+                        En cours
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Projet 10: D4G - API Éco-conçue -->
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl flex flex-col">
+            <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl flex flex-col" data-category="developpement">
                 <img src="screenshot-d4g.jpeg" alt="Illustration projet D4G" class="w-full h-48 object-cover">
                 <div class="p-6 flex flex-col flex-grow">
                     <h3 class="text-2xl font-bold text-bleu-fonce mb-3">API de Résumé Éco-Conçue (D4G)</h3>
@@ -386,7 +486,7 @@
             </div>
 
             <!-- Projet 11: Ce Portfolio (méta) -->
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl flex flex-col">
+            <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl flex flex-col" data-category="developpement">
                 <img src="screenshot-portfolio.jpeg" alt="Illustration projet Portfolio" class="w-full h-48 object-cover">
                 <div class="p-6 flex flex-col flex-grow">
                     <h3 class="text-2xl font-bold text-bleu-fonce mb-3">Site Web Portfolio (Ce site)</h3>
@@ -441,6 +541,19 @@
             }, { threshold: 0.1 });
             document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
         })();
+        function filterProjects(category) {
+            document.querySelectorAll('.filter-btn').forEach(function(btn) {
+                btn.classList.toggle('active', btn.dataset.filter === category);
+            });
+            document.querySelectorAll('.project-card').forEach(function(card) {
+                if (category === 'tous') {
+                    card.classList.remove('filtered-out');
+                } else {
+                    var cats = (card.dataset.category || '').split(' ');
+                    card.classList.toggle('filtered-out', !cats.includes(category));
+                }
+            });
+        }
         function toggleDark() {
             const isDark = document.documentElement.classList.toggle('dark');
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
@@ -477,6 +590,16 @@
                 });
             }
         })();
+        // Back to top
+        window.addEventListener('scroll', function() {
+            var btt = document.getElementById('back-to-top');
+            if (btt) btt.classList.toggle('visible', window.scrollY > 320);
+        });
     </script>
+
+    <!-- Back to top button -->
+    <button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Retour en haut" title="Retour en haut" class="fixed bottom-6 right-6 z-50 w-11 h-11 rounded-full bg-bleu-moyen text-white shadow-lg flex items-center justify-center hover:bg-bleu-fonce transition-colors">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
 </body>
 </html>
