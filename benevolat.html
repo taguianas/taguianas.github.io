@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <title>Engagements - Portfolio Anas TAGUI</title>
+    <meta property="og:title" content="Engagements - Anas TAGUI">
+    <meta property="og:description" content="Application web pour tournois de snooker et bénévolat associatif. Allier compétences techniques et engagement citoyen.">
+    <meta property="og:image" content="https://taguianas.github.io/screenshot-snooker.jpeg">
+    <meta property="og:url" content="https://taguianas.github.io/benevolat.html">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap');
@@ -44,6 +48,12 @@
         .dark .border-bleu-clair { border-color: #2d6a8a !important; }
         .dark .border-creme { border-color: #0f172a !important; }
         .dark .text-green-600 { color: #4ade80 !important; }
+        /* Lang toggle */
+        .lang-btn { font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; border: 1.5px solid #A8DADC; color: #A8DADC; transition: background 0.2s, color 0.2s; cursor: pointer; background: transparent; }
+        .lang-btn.active-lang { background: #A8DADC; color: #1D3557; }
+        .lang-btn:hover:not(.active-lang) { background: rgba(168,218,220,0.15); }
+        /* Scroll progress bar */
+        #scroll-bar { position: fixed; top: 0; left: 0; height: 2px; width: 0%; background: linear-gradient(90deg, #1D3557, #457B9D, #A8DADC); z-index: 9999; transition: width 0.08s linear; }
     </style>
     <script>
         tailwind.config = {
@@ -60,6 +70,7 @@
     <script>if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');</script>
 </head>
 <body class="bg-creme text-bleu-fonce">
+    <div id="scroll-bar"></div>
 
     <!-- Bloc SVG pour les icônes -->
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -77,11 +88,15 @@
                 <a href="index.html">Anas TAGUI</a>
             </div>
             <ul class="hidden md:flex space-x-6 items-center">
-                <li><a href="index.html" class="hover:text-bleu-clair transition-colors">Accueil</a></li>
-                <li><a href="projets.html" class="hover:text-bleu-clair transition-colors">Projets</a></li>
-                <li><a href="parcours.html" class="hover:text-bleu-clair transition-colors">Parcours</a></li>
-                <li><a href="benevolat.html" class="hover:text-bleu-clair transition-colors font-bold border-b-2 border-bleu-clair pb-0.5">Bénévolat</a></li>
-                <li><a href="contact.html" class="hover:text-bleu-clair transition-colors">Contact</a></li>
+                <li><a href="index.html" class="hover:text-bleu-clair transition-colors" data-i18n="nav.home">Accueil</a></li>
+                <li><a href="projets.html" class="hover:text-bleu-clair transition-colors" data-i18n="nav.projects">Projets</a></li>
+                <li><a href="parcours.html" class="hover:text-bleu-clair transition-colors" data-i18n="nav.parcours">Parcours</a></li>
+                <li><a href="benevolat.html" class="hover:text-bleu-clair transition-colors font-bold border-b-2 border-bleu-clair pb-0.5" data-i18n="nav.volunteer">Bénévolat</a></li>
+                <li><a href="contact.html" class="hover:text-bleu-clair transition-colors" data-i18n="nav.contact">Contact</a></li>
+                <li class="flex items-center space-x-1">
+                    <button class="lang-btn active-lang" data-lang="fr" onclick="setLang(this.dataset.lang)">FR</button>
+                    <button class="lang-btn" data-lang="en" onclick="setLang(this.dataset.lang)">EN</button>
+                </li>
                 <li>
                     <button id="dark-toggle" onclick="toggleDark()" title="Basculer le thème" aria-label="Basculer le thème" class="p-2 rounded-lg text-creme hover:bg-bleu-moyen transition-colors">
                         <svg id="icon-sun" class="w-5 h-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
@@ -90,6 +105,8 @@
                 </li>
             </ul>
             <div class="flex items-center space-x-1 md:hidden">
+                <button class="lang-btn active-lang" data-lang="fr" onclick="setLang(this.dataset.lang)">FR</button>
+                <button class="lang-btn" data-lang="en" onclick="setLang(this.dataset.lang)">EN</button>
                 <button onclick="toggleDark()" title="Basculer le thème" aria-label="Basculer le thème" class="p-2 rounded-lg text-creme hover:bg-bleu-moyen transition-colors">
                     <svg id="icon-sun-m" class="w-5 h-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
                     <svg id="icon-moon-m" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
@@ -102,11 +119,11 @@
         </nav>
         <div id="mobile-menu" class="hidden md:hidden border-t border-bleu-moyen">
             <ul class="container mx-auto px-6 py-3 flex flex-col space-y-1">
-                <li><a href="index.html" class="block px-3 py-2 rounded-lg text-creme hover:bg-bleu-moyen transition-colors">Accueil</a></li>
-                <li><a href="projets.html" class="block px-3 py-2 rounded-lg text-creme hover:bg-bleu-moyen transition-colors">Projets</a></li>
-                <li><a href="parcours.html" class="block px-3 py-2 rounded-lg text-creme hover:bg-bleu-moyen transition-colors">Parcours</a></li>
-                <li><a href="benevolat.html" class="block px-3 py-2 rounded-lg text-creme font-bold bg-bleu-moyen">Bénévolat</a></li>
-                <li><a href="contact.html" class="block px-3 py-2 rounded-lg text-creme hover:bg-bleu-moyen transition-colors">Contact</a></li>
+                <li><a href="index.html" class="block px-3 py-2 rounded-lg text-creme hover:bg-bleu-moyen transition-colors" data-i18n="nav.home">Accueil</a></li>
+                <li><a href="projets.html" class="block px-3 py-2 rounded-lg text-creme hover:bg-bleu-moyen transition-colors" data-i18n="nav.projects">Projets</a></li>
+                <li><a href="parcours.html" class="block px-3 py-2 rounded-lg text-creme hover:bg-bleu-moyen transition-colors" data-i18n="nav.parcours">Parcours</a></li>
+                <li><a href="benevolat.html" class="block px-3 py-2 rounded-lg text-creme font-bold bg-bleu-moyen" data-i18n="nav.volunteer">Bénévolat</a></li>
+                <li><a href="contact.html" class="block px-3 py-2 rounded-lg text-creme hover:bg-bleu-moyen transition-colors" data-i18n="nav.contact">Contact</a></li>
             </ul>
         </div>
     </header>
@@ -115,8 +132,8 @@
     <main class="container mx-auto px-6 py-16">
         
         <div class="text-center mb-16">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-bleu-fonce">Mes Engagements</h1>
-            <p class="text-lg text-bleu-moyen mt-4">Allier compétences techniques et engagement citoyen.</p>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-bleu-fonce" data-i18n="benev.title">Mes Engagements</h1>
+            <p class="text-lg text-bleu-moyen mt-4" data-i18n="benev.sub">Allier compétences techniques et engagement citoyen.</p>
         </div>
 
         <!-- Grille des engagements -->
@@ -126,8 +143,8 @@
             <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl flex flex-col">
                 <img src="screenshot-snooker.jpeg" alt="Illustration application Snooker" class="w-full h-48 object-cover">
                 <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-2xl font-bold text-bleu-fonce mb-3">Application Web - Snooker Shoot-Out</h3>
-                    <p class="text-gray-700 mb-4 flex-grow">
+                    <h3 class="text-2xl font-bold text-bleu-fonce mb-3" data-i18n="benev.app.title">Application Web - Snooker Shoot-Out</h3>
+                    <p class="text-gray-700 mb-4 flex-grow" data-i18n-html="benev.app.desc">
                         Développement d'une application web en <strong>React.js</strong> pour le club de snooker (affilié FFB) afin de gérer les tournois "Shoot-Out". L'outil gère le chronomètre de match et de tir, le score, et les fautes en temps réel avec une interface dynamique.
                     </p>
                     <div class="mb-6">
@@ -141,7 +158,7 @@
                         <!-- A REMPLACER : Mettez le lien vers votre application -->
                         <a href="https://shoot-out-snooker.vercel.app" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-bleu-moyen font-semibold hover:text-rouge-accent transition-colors">
                             <svg class="w-5 h-5 mr-2"><use href="#icon-link"></use></svg>
-                            Voir l'application
+                            <span data-i18n="benev.app.link">Voir l'application</span>
                         </a>
                     </div>
                 </div>
@@ -151,19 +168,19 @@
             <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl flex flex-col">
                 <img src="https://placehold.co/600x400/A8DADC/1D3557?text=Cop1+Angers" alt="Illustration Cop1" class="w-full h-48 object-cover">
                 <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-2xl font-bold text-bleu-fonce mb-3">Bénévole Distribution Alimentaire</h3>
-                    <p class="text-gray-700 mb-4 flex-grow">
+                    <h3 class="text-2xl font-bold text-bleu-fonce mb-3" data-i18n="benev.cop.title">Bénévole Distribution Alimentaire</h3>
+                    <p class="text-gray-700 mb-4 flex-grow" data-i18n-html="benev.cop.desc">
                         Participation active aux opérations de distribution alimentaire pour l'association <strong>Cop1 - Solidarités Étudiantes</strong> à Angers. Aide à la logistique, accueil et distribution des denrées aux étudiants.
                     </p>
                     <div class="mb-6">
-                        <span class="inline-block bg-purple-100 text-purple-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Bénévolat</span>
+                        <span class="inline-block bg-purple-100 text-purple-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full" data-i18n="benev.cop.badge">Bénévolat</span>
                         <span class="inline-block bg-red-100 text-red-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Engagement Social</span>
                         <span class="inline-block bg-gray-200 text-gray-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">Angers</span>
                     </div>
                     <div class="mt-auto">
                         <span class="flex items-center text-gray-500">
                             <svg class="w-5 h-5 mr-2"><use href="#icon-heart"></use></svg>
-                            Engagement associatif
+                            <span data-i18n="benev.cop.text">Engagement associatif</span>
                         </span>
                     </div>
                 </div>
@@ -180,7 +197,7 @@
                 <a href="https://www.linkedin.com/in/anas-tagui-7b0599241/" target="_blank" rel="noopener noreferrer" class="hover:text-bleu-clair transition-colors" title="LinkedIn"><svg class="w-8 h-8"><use href="#icon-linkedin"></use></svg></a>
                 <a href="https://github.com/taguianas" target="_blank" rel="noopener noreferrer" class="hover:text-bleu-clair transition-colors" title="GitHub"><svg class="w-8 h-8"><use href="#icon-github"></use></svg></a>
             </div>
-            <p>&copy; 2025 Anas TAGUI. Tous droits réservés.</p>
+            <p data-i18n="footer.rights">&copy; 2025 Anas TAGUI. Tous droits réservés.</p>
         </div>
     </footer>
 
@@ -236,5 +253,13 @@
             }
         })();
     </script>
+    <script>
+        window.addEventListener('scroll', function() {
+            var scrolled = document.documentElement.scrollTop || document.body.scrollTop;
+            var total = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            document.getElementById('scroll-bar').style.width = (total > 0 ? (scrolled / total * 100) : 0) + '%';
+        });
+    </script>
+    <script src="i18n.js"></script>
 </body>
 </html>

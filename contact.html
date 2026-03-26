@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <title>Contact - Portfolio Anas TAGUI</title>
+    <meta property="og:title" content="Contacter Anas TAGUI">
+    <meta property="og:description" content="Disponible pour une alternance en cybersécurité. Retrouvez-moi sur LinkedIn ou envoyez-moi un message directement.">
+    <meta property="og:image" content="https://taguianas.github.io/photo.jpeg">
+    <meta property="og:url" content="https://taguianas.github.io/contact.html">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap');
@@ -44,6 +48,12 @@
         .dark .border-bleu-clair { border-color: #2d6a8a !important; }
         .dark .border-creme { border-color: #0f172a !important; }
         .dark .text-green-600 { color: #4ade80 !important; }
+        /* Lang toggle */
+        .lang-btn { font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; border: 1.5px solid #A8DADC; color: #A8DADC; transition: background 0.2s, color 0.2s; cursor: pointer; background: transparent; }
+        .lang-btn.active-lang { background: #A8DADC; color: #1D3557; }
+        .lang-btn:hover:not(.active-lang) { background: rgba(168,218,220,0.15); }
+        /* Scroll progress bar */
+        #scroll-bar { position: fixed; top: 0; left: 0; height: 2px; width: 0%; background: linear-gradient(90deg, #1D3557, #457B9D, #A8DADC); z-index: 9999; transition: width 0.08s linear; }
         /* Contact form inputs */
         .form-input { transition: border-color 0.2s, box-shadow 0.2s; }
         .dark .form-input { background-color: #0f172a !important; color: #e2e8f0 !important; border-color: #334155 !important; }
@@ -65,6 +75,7 @@
     <script>if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');</script>
 </head>
 <body class="bg-creme text-bleu-fonce">
+    <div id="scroll-bar"></div>
 
     <!-- Bloc SVG pour les icônes -->
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -84,11 +95,15 @@
                 <a href="index.html">Anas TAGUI</a>
             </div>
             <ul class="hidden md:flex space-x-6 items-center">
-                <li><a href="index.html" class="hover:text-bleu-clair transition-colors">Accueil</a></li>
-                <li><a href="projets.html" class="hover:text-bleu-clair transition-colors">Projets</a></li>
-                <li><a href="parcours.html" class="hover:text-bleu-clair transition-colors">Parcours</a></li>
-                <li><a href="benevolat.html" class="hover:text-bleu-clair transition-colors">Bénévolat</a></li>
-                <li><a href="contact.html" class="hover:text-bleu-clair transition-colors font-bold border-b-2 border-bleu-clair pb-0.5">Contact</a></li>
+                <li><a href="index.html" class="hover:text-bleu-clair transition-colors" data-i18n="nav.home">Accueil</a></li>
+                <li><a href="projets.html" class="hover:text-bleu-clair transition-colors" data-i18n="nav.projects">Projets</a></li>
+                <li><a href="parcours.html" class="hover:text-bleu-clair transition-colors" data-i18n="nav.parcours">Parcours</a></li>
+                <li><a href="benevolat.html" class="hover:text-bleu-clair transition-colors" data-i18n="nav.volunteer">Bénévolat</a></li>
+                <li><a href="contact.html" class="hover:text-bleu-clair transition-colors font-bold border-b-2 border-bleu-clair pb-0.5" data-i18n="nav.contact">Contact</a></li>
+                <li class="flex items-center space-x-1">
+                    <button class="lang-btn active-lang" data-lang="fr" onclick="setLang(this.dataset.lang)">FR</button>
+                    <button class="lang-btn" data-lang="en" onclick="setLang(this.dataset.lang)">EN</button>
+                </li>
                 <li>
                     <button id="dark-toggle" onclick="toggleDark()" title="Basculer le thème" aria-label="Basculer le thème" class="p-2 rounded-lg text-creme hover:bg-bleu-moyen transition-colors">
                         <svg id="icon-sun" class="w-5 h-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
@@ -97,6 +112,8 @@
                 </li>
             </ul>
             <div class="flex items-center space-x-1 md:hidden">
+                <button class="lang-btn active-lang" data-lang="fr" onclick="setLang(this.dataset.lang)">FR</button>
+                <button class="lang-btn" data-lang="en" onclick="setLang(this.dataset.lang)">EN</button>
                 <button onclick="toggleDark()" title="Basculer le thème" aria-label="Basculer le thème" class="p-2 rounded-lg text-creme hover:bg-bleu-moyen transition-colors">
                     <svg id="icon-sun-m" class="w-5 h-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
                     <svg id="icon-moon-m" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
@@ -109,11 +126,11 @@
         </nav>
         <div id="mobile-menu" class="hidden md:hidden border-t border-bleu-moyen">
             <ul class="container mx-auto px-6 py-3 flex flex-col space-y-1">
-                <li><a href="index.html" class="block px-3 py-2 rounded-lg text-creme hover:bg-bleu-moyen transition-colors">Accueil</a></li>
-                <li><a href="projets.html" class="block px-3 py-2 rounded-lg text-creme hover:bg-bleu-moyen transition-colors">Projets</a></li>
-                <li><a href="parcours.html" class="block px-3 py-2 rounded-lg text-creme hover:bg-bleu-moyen transition-colors">Parcours</a></li>
-                <li><a href="benevolat.html" class="block px-3 py-2 rounded-lg text-creme hover:bg-bleu-moyen transition-colors">Bénévolat</a></li>
-                <li><a href="contact.html" class="block px-3 py-2 rounded-lg text-creme font-bold bg-bleu-moyen">Contact</a></li>
+                <li><a href="index.html" class="block px-3 py-2 rounded-lg text-creme hover:bg-bleu-moyen transition-colors" data-i18n="nav.home">Accueil</a></li>
+                <li><a href="projets.html" class="block px-3 py-2 rounded-lg text-creme hover:bg-bleu-moyen transition-colors" data-i18n="nav.projects">Projets</a></li>
+                <li><a href="parcours.html" class="block px-3 py-2 rounded-lg text-creme hover:bg-bleu-moyen transition-colors" data-i18n="nav.parcours">Parcours</a></li>
+                <li><a href="benevolat.html" class="block px-3 py-2 rounded-lg text-creme hover:bg-bleu-moyen transition-colors" data-i18n="nav.volunteer">Bénévolat</a></li>
+                <li><a href="contact.html" class="block px-3 py-2 rounded-lg text-creme font-bold bg-bleu-moyen" data-i18n="nav.contact">Contact</a></li>
             </ul>
         </div>
     </header>
@@ -122,8 +139,8 @@
     <main class="container mx-auto px-6 py-16" style="min-height: 70vh;">
         
         <div class="text-center mb-16 max-w-3xl mx-auto">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-bleu-fonce">Me Contacter</h1>
-            <p class="text-lg text-bleu-moyen mt-4">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-bleu-fonce" data-i18n="contact.title">Me Contacter</h1>
+            <p class="text-lg text-bleu-moyen mt-4" data-i18n="contact.sub">
                 Je suis à votre disposition pour toute opportunité d'alternance ou pour échanger sur mes projets et compétences.
             </p>
         </div>
@@ -133,7 +150,7 @@
                 
                 <!-- Infos de contact -->
                 <div class="space-y-6">
-                    <h2 class="text-3xl font-bold text-bleu-fonce">Informations</h2>
+                    <h2 class="text-3xl font-bold text-bleu-fonce" data-i18n="contact.info">Informations</h2>
                     
                     <div class="flex items-center space-x-4">
                         <svg class="w-8 h-8 text-bleu-moyen flex-shrink-0"><use href="#icon-mail"></use></svg>
@@ -155,7 +172,7 @@
                     <div class="flex items-center space-x-4">
                         <svg class="w-8 h-8 text-bleu-moyen flex-shrink-0"><use href="#icon-phone"></use></svg>
                         <div>
-                            <h3 class="text-lg font-semibold text-gray-600">Téléphone</h3>
+                            <h3 class="text-lg font-semibold text-gray-600" data-i18n="contact.phone">Téléphone</h3>
                             <a href="tel:+33780833737" class="text-lg text-bleu-fonce hover:text-rouge-accent">07 80 83 37 37</a>
                         </div>
                     </div>
@@ -163,7 +180,7 @@
                     <div class="flex items-center space-x-4">
                         <svg class="w-8 h-8 text-bleu-moyen flex-shrink-0"><use href="#icon-map"></use></svg>
                         <div>
-                            <h3 class="text-lg font-semibold text-gray-600">Localisation</h3>
+                            <h3 class="text-lg font-semibold text-gray-600" data-i18n="contact.location">Localisation</h3>
                             <p class="text-lg text-bleu-fonce">Angers, France</p>
                         </div>
                     </div>
@@ -172,15 +189,15 @@
 
                 <!-- Liens Sociaux -->
                 <div class="space-y-6">
-                    <h2 class="text-3xl font-bold text-bleu-fonce">Réseaux Professionnels</h2>
-                    <p class="text-gray-700">Retrouvez-moi sur LinkedIn et consultez mes projets sur GitHub.</p>
+                    <h2 class="text-3xl font-bold text-bleu-fonce" data-i18n="contact.social">Réseaux Professionnels</h2>
+                    <p class="text-gray-700" data-i18n="contact.social.sub">Retrouvez-moi sur LinkedIn et consultez mes projets sur GitHub.</p>
                     
                     <!-- A REMPLACER : Mettez vos vrais liens -->
                     <a href="https://www.linkedin.com/in/anas-tagui-7b0599241/" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-4 p-4 bg-creme rounded-lg hover:shadow-md hover:bg-bleu-clair transition-all group">
                         <svg class="w-10 h-10 text-bleu-fonce group-hover:text-white"><use href="#icon-linkedin"></use></svg>
                         <div>
                             <h3 class="text-xl font-bold text-bleu-fonce group-hover:text-white">LinkedIn</h3>
-                            <p class="text-bleu-moyen group-hover:text-white">Voir mon profil professionnel</p>
+                            <p class="text-bleu-moyen group-hover:text-white" data-i18n="contact.li.sub">Voir mon profil professionnel</p>
                         </div>
                     </a>
                     
@@ -188,7 +205,7 @@
                         <svg class="w-10 h-10 text-bleu-fonce group-hover:text-white"><use href="#icon-github"></use></svg>
                         <div>
                             <h3 class="text-xl font-bold text-bleu-fonce group-hover:text-white">GitHub</h3>
-                            <p class="text-bleu-moyen group-hover:text-white">Explorer mes dépôts de code</p>
+                            <p class="text-bleu-moyen group-hover:text-white" data-i18n="contact.gh.sub">Explorer mes dépôts de code</p>
                         </div>
                     </a>
 
@@ -198,7 +215,7 @@
                         <svg class="w-10 h-10 text-bleu-fonce group-hover:text-white"><use href="#icon-tryhackme"></use></svg>
                         <div>
                             <h3 class="text-xl font-bold text-bleu-fonce group-hover:text-white">TryHackMe</h3>
-                            <p class="text-bleu-moyen group-hover:text-white">Voir mon profil de challenges</p>
+                            <p class="text-bleu-moyen group-hover:text-white" data-i18n="contact.thm.sub">Voir mon profil de challenges</p>
                         </div>
                     </a>
 
@@ -208,33 +225,33 @@
 
         <!-- Formulaire de contact -->
         <div class="bg-white p-8 md:p-12 rounded-xl shadow-lg max-w-4xl mx-auto mt-10">
-            <h2 class="text-3xl font-bold text-bleu-fonce mb-2">Envoyer un message</h2>
-            <p class="text-gray-600 mb-8">Réponse sous 24h.</p>
+            <h2 class="text-3xl font-bold text-bleu-fonce mb-2" data-i18n="form.title">Envoyer un message</h2>
+            <p class="text-gray-600 mb-8" data-i18n="form.reply">Réponse sous 24h.</p>
 
             <!-- ACTION : remplacez YOUR_FORM_ID par votre ID Formspree (formspree.io > New Form) -->
             <form id="contact-form" action="https://formspree.io/f/meepqbgb" method="POST" novalidate>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div>
-                        <label for="name" class="form-label block text-sm font-semibold text-gray-600 mb-2">Nom <span class="text-rouge-accent">*</span></label>
-                        <input type="text" id="name" name="name" required placeholder="Votre nom complet"
+                        <label for="name" class="form-label block text-sm font-semibold text-gray-600 mb-2"><span data-i18n="form.name">Nom</span> <span class="text-rouge-accent">*</span></label>
+                        <input type="text" id="name" name="name" required placeholder="Votre nom complet" data-i18n-ph="form.name.ph"
                             class="form-input w-full px-4 py-3 rounded-lg border border-gray-200 bg-creme text-bleu-fonce placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-bleu-moyen focus:border-transparent">
                     </div>
                     <div>
                         <label for="email" class="form-label block text-sm font-semibold text-gray-600 mb-2">Email <span class="text-rouge-accent">*</span></label>
-                        <input type="email" id="email" name="email" required placeholder="votre@email.com"
+                        <input type="email" id="email" name="email" required placeholder="votre@email.com" data-i18n-ph="form.email.ph"
                             class="form-input w-full px-4 py-3 rounded-lg border border-gray-200 bg-creme text-bleu-fonce placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-bleu-moyen focus:border-transparent">
                     </div>
                 </div>
                 <div class="mb-6">
-                    <label for="message" class="form-label block text-sm font-semibold text-gray-600 mb-2">Message <span class="text-rouge-accent">*</span></label>
-                    <textarea id="message" name="message" rows="5" required placeholder="Votre message..."
+                    <label for="message" class="form-label block text-sm font-semibold text-gray-600 mb-2"><span data-i18n="form.message">Message</span> <span class="text-rouge-accent">*</span></label>
+                    <textarea id="message" name="message" rows="5" required placeholder="Votre message..." data-i18n-ph="form.msg.ph"
                         class="form-input w-full px-4 py-3 rounded-lg border border-gray-200 bg-creme text-bleu-fonce placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-bleu-moyen focus:border-transparent resize-none"></textarea>
                 </div>
                 <div class="flex items-center gap-4 flex-wrap">
                     <button type="submit" id="submit-btn"
                         class="inline-flex items-center gap-2 px-8 py-3 bg-bleu-fonce text-creme font-bold rounded-lg hover:bg-bleu-moyen transition-colors shadow disabled:opacity-60 disabled:cursor-not-allowed">
                         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-                        <span id="btn-label">Envoyer</span>
+                        <span id="btn-label" data-i18n="form.send">Envoyer</span>
                     </button>
                     <p id="form-feedback" class="hidden text-sm font-semibold"></p>
                 </div>
@@ -250,7 +267,7 @@
                 <a href="https://www.linkedin.com/in/anas-tagui-7b0599241/" target="_blank" rel="noopener noreferrer" class="hover:text-bleu-clair transition-colors" title="LinkedIn"><svg class="w-8 h-8"><use href="#icon-linkedin"></use></svg></a>
                 <a href="https://github.com/taguianas" target="_blank" rel="noopener noreferrer" class="hover:text-bleu-clair transition-colors" title="GitHub"><svg class="w-8 h-8"><use href="#icon-github"></use></svg></a>
             </div>
-            <p>&copy; 2025 Anas TAGUI. Tous droits réservés.</p>
+            <p data-i18n="footer.rights">&copy; 2025 Anas TAGUI. Tous droits réservés.</p>
         </div>
     </footer>
 
@@ -346,5 +363,13 @@
             }
         })();
     </script>
+    <script>
+        window.addEventListener('scroll', function() {
+            var scrolled = document.documentElement.scrollTop || document.body.scrollTop;
+            var total = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            document.getElementById('scroll-bar').style.width = (total > 0 ? (scrolled / total * 100) : 0) + '%';
+        });
+    </script>
+    <script src="i18n.js"></script>
 </body>
 </html>

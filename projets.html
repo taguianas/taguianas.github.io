@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <title>Mes Projets - Portfolio Anas TAGUI</title>
+    <meta property="og:title" content="Projets - Anas TAGUI">
+    <meta property="og:description" content="PhishGuard AI, Kali MCP Server, SOC virtuel, CTF writeups et plus. Découvrez mes projets en cybersécurité et développement.">
+    <meta property="og:image" content="https://taguianas.github.io/screenshot-phishguard.jpeg">
+    <meta property="og:url" content="https://taguianas.github.io/projets.html">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap');
@@ -52,6 +56,12 @@
         .filter-btn.active { background-color: #1D3557 !important; color: #F1FAEE !important; border-color: #1D3557 !important; }
         .dark .filter-btn:not(.active) { background-color: #1e293b; color: #94a3b8; border-color: #457B9D; }
         .dark .filter-btn.active { background-color: #457B9D !important; color: #F1FAEE !important; border-color: #457B9D !important; }
+        /* Lang toggle */
+        .lang-btn { font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; border: 1.5px solid #A8DADC; color: #A8DADC; transition: background 0.2s, color 0.2s; cursor: pointer; background: transparent; }
+        .lang-btn.active-lang { background: #A8DADC; color: #1D3557; }
+        .lang-btn:hover:not(.active-lang) { background: rgba(168,218,220,0.15); }
+        /* Scroll progress bar */
+        #scroll-bar { position: fixed; top: 0; left: 0; height: 2px; width: 0%; background: linear-gradient(90deg, #1D3557, #457B9D, #A8DADC); z-index: 9999; transition: width 0.08s linear; }
         /* Card filter animation */
         .project-card { transition: opacity 0.25s ease, transform 0.25s ease, opacity 0.6s ease, transform 0.6s ease; }
         .project-card.filtered-out { display: none; }
@@ -71,6 +81,7 @@
     <script>if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');</script>
 </head>
 <body class="bg-creme text-bleu-fonce">
+    <div id="scroll-bar"></div>
 
     <!-- Bloc SVG pour les icônes -->
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -86,11 +97,15 @@
                 <a href="index.html">Anas TAGUI</a>
             </div>
             <ul class="hidden md:flex space-x-6 items-center">
-                <li><a href="index.html" class="hover:text-bleu-clair transition-colors">Accueil</a></li>
-                <li><a href="projets.html" class="hover:text-bleu-clair transition-colors font-bold border-b-2 border-bleu-clair pb-0.5">Projets</a></li>
-                <li><a href="parcours.html" class="hover:text-bleu-clair transition-colors">Parcours</a></li>
-                <li><a href="benevolat.html" class="hover:text-bleu-clair transition-colors">Bénévolat</a></li>
-                <li><a href="contact.html" class="hover:text-bleu-clair transition-colors">Contact</a></li>
+                <li><a href="index.html" class="hover:text-bleu-clair transition-colors" data-i18n="nav.home">Accueil</a></li>
+                <li><a href="projets.html" class="hover:text-bleu-clair transition-colors font-bold border-b-2 border-bleu-clair pb-0.5" data-i18n="nav.projects">Projets</a></li>
+                <li><a href="parcours.html" class="hover:text-bleu-clair transition-colors" data-i18n="nav.parcours">Parcours</a></li>
+                <li><a href="benevolat.html" class="hover:text-bleu-clair transition-colors" data-i18n="nav.volunteer">Bénévolat</a></li>
+                <li><a href="contact.html" class="hover:text-bleu-clair transition-colors" data-i18n="nav.contact">Contact</a></li>
+                <li class="flex items-center space-x-1">
+                    <button class="lang-btn active-lang" data-lang="fr" onclick="setLang(this.dataset.lang)">FR</button>
+                    <button class="lang-btn" data-lang="en" onclick="setLang(this.dataset.lang)">EN</button>
+                </li>
                 <li>
                     <button id="dark-toggle" onclick="toggleDark()" title="Basculer le thème" aria-label="Basculer le thème" class="p-2 rounded-lg text-creme hover:bg-bleu-moyen transition-colors">
                         <svg id="icon-sun" class="w-5 h-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
@@ -99,6 +114,8 @@
                 </li>
             </ul>
             <div class="flex items-center space-x-1 md:hidden">
+                <button class="lang-btn active-lang" data-lang="fr" onclick="setLang(this.dataset.lang)">FR</button>
+                <button class="lang-btn" data-lang="en" onclick="setLang(this.dataset.lang)">EN</button>
                 <button onclick="toggleDark()" title="Basculer le thème" aria-label="Basculer le thème" class="p-2 rounded-lg text-creme hover:bg-bleu-moyen transition-colors">
                     <svg id="icon-sun-m" class="w-5 h-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
                     <svg id="icon-moon-m" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
@@ -111,11 +128,11 @@
         </nav>
         <div id="mobile-menu" class="hidden md:hidden border-t border-bleu-moyen">
             <ul class="container mx-auto px-6 py-3 flex flex-col space-y-1">
-                <li><a href="index.html" class="block px-3 py-2 rounded-lg text-creme hover:bg-bleu-moyen transition-colors">Accueil</a></li>
-                <li><a href="projets.html" class="block px-3 py-2 rounded-lg text-creme font-bold bg-bleu-moyen">Projets</a></li>
-                <li><a href="parcours.html" class="block px-3 py-2 rounded-lg text-creme hover:bg-bleu-moyen transition-colors">Parcours</a></li>
-                <li><a href="benevolat.html" class="block px-3 py-2 rounded-lg text-creme hover:bg-bleu-moyen transition-colors">Bénévolat</a></li>
-                <li><a href="contact.html" class="block px-3 py-2 rounded-lg text-creme hover:bg-bleu-moyen transition-colors">Contact</a></li>
+                <li><a href="index.html" class="block px-3 py-2 rounded-lg text-creme hover:bg-bleu-moyen transition-colors" data-i18n="nav.home">Accueil</a></li>
+                <li><a href="projets.html" class="block px-3 py-2 rounded-lg text-creme font-bold bg-bleu-moyen" data-i18n="nav.projects">Projets</a></li>
+                <li><a href="parcours.html" class="block px-3 py-2 rounded-lg text-creme hover:bg-bleu-moyen transition-colors" data-i18n="nav.parcours">Parcours</a></li>
+                <li><a href="benevolat.html" class="block px-3 py-2 rounded-lg text-creme hover:bg-bleu-moyen transition-colors" data-i18n="nav.volunteer">Bénévolat</a></li>
+                <li><a href="contact.html" class="block px-3 py-2 rounded-lg text-creme hover:bg-bleu-moyen transition-colors" data-i18n="nav.contact">Contact</a></li>
             </ul>
         </div>
     </header>
@@ -124,15 +141,15 @@
     <main class="container mx-auto px-6 py-16">
 
         <div class="text-center mb-16">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-bleu-fonce">Mes Projets</h1>
-            <p class="text-lg text-bleu-moyen mt-4">Voici une sélection de projets qui démontrent mes compétences techniques.</p>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-bleu-fonce" data-i18n="projects.title">Mes Projets</h1>
+            <p class="text-lg text-bleu-moyen mt-4" data-i18n="projects.sub">Voici une sélection de projets qui démontrent mes compétences techniques.</p>
         </div>
 
         <!-- Boutons de filtre -->
         <div class="flex justify-center flex-wrap gap-3 mb-12">
-            <button onclick="filterProjects('tous')" data-filter="tous" class="filter-btn active px-5 py-2 rounded-full font-semibold text-sm border border-bleu-fonce bg-bleu-fonce text-creme shadow-sm">Tous</button>
-            <button onclick="filterProjects('cybersecurite')" data-filter="cybersecurite" class="filter-btn px-5 py-2 rounded-full font-semibold text-sm border border-bleu-moyen bg-white text-bleu-fonce shadow-sm hover:bg-bleu-moyen hover:text-white">Cybersécurité</button>
-            <button onclick="filterProjects('developpement')" data-filter="developpement" class="filter-btn px-5 py-2 rounded-full font-semibold text-sm border border-bleu-moyen bg-white text-bleu-fonce shadow-sm hover:bg-bleu-moyen hover:text-white">Développement</button>
+            <button onclick="filterProjects('tous')" data-filter="tous" class="filter-btn active px-5 py-2 rounded-full font-semibold text-sm border border-bleu-fonce bg-bleu-fonce text-creme shadow-sm" data-i18n="filter.all">Tous</button>
+            <button onclick="filterProjects('cybersecurite')" data-filter="cybersecurite" class="filter-btn px-5 py-2 rounded-full font-semibold text-sm border border-bleu-moyen bg-white text-bleu-fonce shadow-sm hover:bg-bleu-moyen hover:text-white" data-i18n="filter.cyber">Cybersécurité</button>
+            <button onclick="filterProjects('developpement')" data-filter="developpement" class="filter-btn px-5 py-2 rounded-full font-semibold text-sm border border-bleu-moyen bg-white text-bleu-fonce shadow-sm hover:bg-bleu-moyen hover:text-white" data-i18n="filter.dev">Développement</button>
             <button onclick="filterProjects('ctf')" data-filter="ctf" class="filter-btn px-5 py-2 rounded-full font-semibold text-sm border border-bleu-moyen bg-white text-bleu-fonce shadow-sm hover:bg-bleu-moyen hover:text-white">CTF / Labs</button>
         </div>
 
@@ -143,13 +160,13 @@
             <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl flex flex-col" data-category="cybersecurite developpement">
                 <div class="relative">
                     <img src="screenshot-phishguard.jpeg" alt="Illustration PhishGuard AI" class="w-full h-48 object-cover">
-                    <div class="absolute top-2 left-2 bg-rouge-accent text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider shadow-md">
+                    <div class="absolute top-2 left-2 bg-rouge-accent text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider shadow-md" data-i18n="badge.flagship">
                         Projet Phare
                     </div>
                 </div>
                 <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-2xl font-bold text-bleu-fonce mb-3">PhishGuard AI</h3>
-                    <p class="text-gray-700 mb-4 flex-grow">
+                    <h3 class="text-2xl font-bold text-bleu-fonce mb-3" data-i18n="proj.phishguard.title">PhishGuard AI</h3>
+                    <p class="text-gray-700 mb-4 flex-grow" data-i18n-html="proj.phishguard.desc">
                         Plateforme full-stack d'analyse de phishing combinant règles heuristiques, détection de typosquatting, APIs de threat intelligence, un classificateur <strong>XGBoost</strong> entraîné et une analyse d'emails par <strong>LLM</strong>. Système d'authentification complet avec isolation des données par utilisateur.
                     </p>
                     <div class="mb-6">
@@ -162,11 +179,11 @@
                     <div class="mt-auto flex flex-wrap gap-3">
                         <a href="https://github.com/taguianas/PhishGuard-AI" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-bleu-moyen font-semibold hover:text-rouge-accent transition-colors">
                             <svg class="w-5 h-5 mr-2"><use href="#icon-github"></use></svg>
-                            Voir sur GitHub
+                            <span data-i18n="link.github">Voir sur GitHub</span>
                         </a>
                         <a href="https://phishguard-frontend-7ir8.onrender.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-bleu-moyen font-semibold hover:text-rouge-accent transition-colors">
                             <svg class="w-5 h-5 mr-2"><use href="#icon-link"></use></svg>
-                            Voir la Démo
+                            <span data-i18n="link.demo">Voir la Démo</span>
                         </a>
                     </div>
                 </div>
@@ -178,8 +195,8 @@
                     <img src="https://opengraph.githubassets.com/1/taguianas/PhishGuard-extention" alt="Illustration PhishGuard Extension" class="w-full h-48 object-cover">
                 </div>
                 <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-2xl font-bold text-bleu-fonce mb-3">PhishGuard Extension</h3>
-                    <p class="text-gray-700 mb-4 flex-grow">
+                    <h3 class="text-2xl font-bold text-bleu-fonce mb-3" data-i18n="proj.extension.title">PhishGuard Extension</h3>
+                    <p class="text-gray-700 mb-4 flex-grow" data-i18n-html="proj.extension.desc">
                         Extension Chrome de détection de phishing en temps réel directement dans vos emails. Moteur heuristique de <strong>21 points</strong> combiné à 5 couches de threat intelligence (OpenPhish, Google Safe Browsing, PhishTank...). Analyse 100% locale, zéro transmission de données.
                     </p>
                     <div class="mb-6">
@@ -191,7 +208,7 @@
                     <div class="mt-auto">
                         <a href="https://github.com/taguianas/PhishGuard-extention" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-bleu-moyen font-semibold hover:text-rouge-accent transition-colors">
                             <svg class="w-5 h-5 mr-2"><use href="#icon-github"></use></svg>
-                            Voir sur GitHub
+                            <span data-i18n="link.github">Voir sur GitHub</span>
                         </a>
                     </div>
                 </div>
@@ -201,8 +218,8 @@
             <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl flex flex-col" data-category="developpement">
                 <img src="screenshot-nettools.jpeg" alt="Illustration NetTools" class="w-full h-48 object-cover">
                 <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-2xl font-bold text-bleu-fonce mb-3">NetTools : Boîte à Outils Réseau</h3>
-                    <p class="text-gray-700 mb-4 flex-grow">
+                    <h3 class="text-2xl font-bold text-bleu-fonce mb-3" data-i18n="proj.nettools.title">NetTools : Boîte à Outils Réseau</h3>
+                    <p class="text-gray-700 mb-4 flex-grow" data-i18n-html="proj.nettools.desc">
                         Plateforme professionnelle de <strong>27 outils réseau</strong> fonctionnant entièrement dans le navigateur : calculateurs de sous-réseaux, parseurs de logs, outils de diagnostic et plus. Zéro transmission de données, confidentialité totale.
                     </p>
                     <div class="mb-6">
@@ -214,11 +231,11 @@
                     <div class="mt-auto flex flex-wrap gap-3">
                         <a href="https://github.com/taguianas/net-Tools" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-bleu-moyen font-semibold hover:text-rouge-accent transition-colors">
                             <svg class="w-5 h-5 mr-2"><use href="#icon-github"></use></svg>
-                            Voir sur GitHub
+                            <span data-i18n="link.github">Voir sur GitHub</span>
                         </a>
                         <a href="https://net-tools-eight.vercel.app" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-bleu-moyen font-semibold hover:text-rouge-accent transition-colors">
                             <svg class="w-5 h-5 mr-2"><use href="#icon-link"></use></svg>
-                            Voir la Démo
+                            <span data-i18n="link.demo">Voir la Démo</span>
                         </a>
                     </div>
                 </div>
@@ -230,8 +247,8 @@
                     <img src="https://opengraph.githubassets.com/1/taguianas/kali-mcp-server" alt="Illustration Kali MCP Server" class="w-full h-48 object-cover">
                 </div>
                 <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-2xl font-bold text-bleu-fonce mb-3">Kali MCP Server</h3>
-                    <p class="text-gray-700 mb-4 flex-grow">
+                    <h3 class="text-2xl font-bold text-bleu-fonce mb-3" data-i18n="proj.kalimcp.title">Kali MCP Server</h3>
+                    <p class="text-gray-700 mb-4 flex-grow" data-i18n-html="proj.kalimcp.desc">
                         Serveur <strong>MCP (Model Context Protocol)</strong> Dockerisé exposant 18+ outils Kali Linux (nmap, nikto, sqlmap...) à des clients IA comme Claude Code. Permet d'exécuter des tests de pénétration en langage naturel via <strong>FastMCP 3.x</strong>.
                     </p>
                     <div class="mb-6">
@@ -244,7 +261,7 @@
                     <div class="mt-auto">
                         <a href="https://github.com/taguianas/kali-mcp-server" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-bleu-moyen font-semibold hover:text-rouge-accent transition-colors">
                             <svg class="w-5 h-5 mr-2"><use href="#icon-github"></use></svg>
-                            Voir sur GitHub
+                            <span data-i18n="link.github">Voir sur GitHub</span>
                         </a>
                     </div>
                 </div>
@@ -253,12 +270,12 @@
             <!-- Projet 3: SOC Virtuel -->
             <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl flex flex-col relative" data-category="cybersecurite">
                 <img src="screenshot-soc.jpeg" alt="Illustration projet SOC" class="w-full h-48 object-cover">
-                <div class="absolute top-2 right-2 bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider shadow-md">
+                <div class="absolute top-2 right-2 bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider shadow-md" data-i18n="badge.wip">
                     En cours
                 </div>
                 <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-2xl font-bold text-bleu-fonce mb-3">SOC virtuel (SIEM/SOAR)</h3>
-                    <p class="text-gray-700 mb-4 flex-grow">
+                    <h3 class="text-2xl font-bold text-bleu-fonce mb-3" data-i18n="proj.soc.title">SOC virtuel (SIEM/SOAR)</h3>
+                    <p class="text-gray-700 mb-4 flex-grow" data-i18n-html="proj.soc.desc">
                         Déploiement d'un homelab avec <strong>Wazuh (SIEM)</strong>, <strong>TheHive (SOAR)</strong> et <strong>Shuffle</strong>. Mise en œuvre de scénarios d'attaques contrôlées (ex: brute-force, injection SQL) et automatisation des réponses de sécurité.
                     </p>
                     <div class="mb-6">
@@ -270,7 +287,7 @@
                     <div class="mt-auto">
                         <a href="https://github.com/taguianas/soc-home-lab" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-bleu-moyen font-semibold hover:text-rouge-accent transition-colors">
                             <svg class="w-5 h-5 mr-2"><use href="#icon-github"></use></svg>
-                            Voir sur GitHub
+                            <span data-i18n="link.github">Voir sur GitHub</span>
                         </a>
                     </div>
                 </div>
@@ -280,8 +297,8 @@
             <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl flex flex-col" data-category="ctf cybersecurite">
                 <img src="screenshot-ctf.jpeg" alt="Illustration CTF Operation Endgame" class="w-full h-48 object-cover">
                 <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-2xl font-bold text-bleu-fonce mb-3">CTF : Operation Endgame (AD)</h3>
-                    <p class="text-gray-700 mb-4 flex-grow">
+                    <h3 class="text-2xl font-bold text-bleu-fonce mb-3" data-i18n="proj.ctf.title">CTF : Operation Endgame (AD)</h3>
+                    <p class="text-gray-700 mb-4 flex-grow" data-i18n-html="proj.ctf.desc">
                         Writeup complet d'un challenge TryHackMe : compromission totale d'un domaine <strong>Active Directory</strong> via Kerberoasting, abus de GenericWrite, et exploitation de credentials codés en dur. Outils : BloodHound, Impacket.
                     </p>
                     <div class="mb-6">
@@ -294,7 +311,7 @@
                     <div class="mt-auto">
                         <a href="https://github.com/taguianas/THM-OperationEndgame" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-bleu-moyen font-semibold hover:text-rouge-accent transition-colors">
                             <svg class="w-5 h-5 mr-2"><use href="#icon-github"></use></svg>
-                            Voir le Writeup
+                            <span data-i18n="link.writeup">Voir le Writeup</span>
                         </a>
                     </div>
                 </div>
@@ -304,8 +321,8 @@
             <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl flex flex-col" data-category="ctf cybersecurite">
                 <img src="screenshot-labs.jpeg" alt="Illustration Web Security Labs" class="w-full h-48 object-cover">
                 <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-2xl font-bold text-bleu-fonce mb-3">Labs Sécurité Web (OWASP)</h3>
-                    <p class="text-gray-700 mb-4 flex-grow">
+                    <h3 class="text-2xl font-bold text-bleu-fonce mb-3" data-i18n="proj.owasp.title">Labs Sécurité Web (OWASP)</h3>
+                    <p class="text-gray-700 mb-4 flex-grow" data-i18n-html="proj.owasp.desc">
                         Labs pratiques couvrant les vulnérabilités web critiques : <strong>CSRF</strong>, failles d'authentification, <strong>JWT bypass</strong>, <strong>IDOR</strong> et contrôle d'accès défaillant. Environnements DVWA et PortSwigger Web Academy.
                     </p>
                     <div class="mb-6">
@@ -318,7 +335,7 @@
                     <div class="mt-auto">
                         <a href="https://github.com/taguianas/lab-secure-coding-authentication" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-bleu-moyen font-semibold hover:text-rouge-accent transition-colors">
                             <svg class="w-5 h-5 mr-2"><use href="#icon-github"></use></svg>
-                            Voir sur GitHub
+                            <span data-i18n="link.github">Voir sur GitHub</span>
                         </a>
                     </div>
                 </div>
@@ -330,8 +347,8 @@
                     <img src="https://opengraph.githubassets.com/1/taguianas/lab-smurf-attack" alt="Illustration Lab Smurf Attack" class="w-full h-48 object-cover">
                 </div>
                 <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-2xl font-bold text-bleu-fonce mb-3">Lab : Smurf Attack (DoS ICMP)</h3>
-                    <p class="text-gray-700 mb-4 flex-grow">
+                    <h3 class="text-2xl font-bold text-bleu-fonce mb-3" data-i18n="proj.smurf.title">Lab : Smurf Attack (DoS ICMP)</h3>
+                    <p class="text-gray-700 mb-4 flex-grow" data-i18n-html="proj.smurf.desc">
                         Lab réseau en environnement virtualisé démontrant une attaque <strong>ICMP Amplification DoS</strong> (Smurf). Utilisation de <strong>hping3</strong>, 4 amplificateurs Knoppix et une victime Windows IIS. Analyse de l'impact selon la bande passante et mise en oeuvre de contre-mesures.
                     </p>
                     <div class="mb-6">
@@ -344,7 +361,7 @@
                     <div class="mt-auto">
                         <a href="https://github.com/taguianas/lab-smurf-attack" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-bleu-moyen font-semibold hover:text-rouge-accent transition-colors">
                             <svg class="w-5 h-5 mr-2"><use href="#icon-github"></use></svg>
-                            Voir sur GitHub
+                            <span data-i18n="link.github">Voir sur GitHub</span>
                         </a>
                     </div>
                 </div>
@@ -354,13 +371,13 @@
             <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-3xl flex flex-col border-2 border-transparent hover:border-orange-400 relative" data-category="cybersecurite">
                 <div class="relative">
                     <img src="screenshot-redteam.jpeg" alt="Illustration RedTeam Shell Framework" class="w-full h-48 object-cover">
-                    <div class="absolute top-2 right-2 bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider shadow-md">
+                    <div class="absolute top-2 right-2 bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider shadow-md" data-i18n="badge.wip">
                         En cours
                     </div>
                 </div>
                 <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-2xl font-bold text-bleu-fonce mb-3">RedTeam Shell Framework</h3>
-                    <p class="text-gray-700 mb-4 flex-grow">
+                    <h3 class="text-2xl font-bold text-bleu-fonce mb-3" data-i18n="proj.redteam.title">RedTeam Shell Framework</h3>
+                    <p class="text-gray-700 mb-4 flex-grow" data-i18n="proj.redteam.desc">
                         Framework modulaire Bash pour les opérations de Red Teaming : gestion de reverse shells chiffrés avec mécanismes d'obfuscation avancés pour tester la résilience des EDR/AV.
                     </p>
                     <div class="mb-6">
@@ -372,7 +389,7 @@
                     <div class="mt-auto">
                         <a href="https://github.com/taguianas/redteam-shell-framework" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-bleu-moyen font-semibold hover:text-rouge-accent transition-colors">
                             <svg class="w-5 h-5 mr-2"><use href="#icon-github"></use></svg>
-                            Voir sur GitHub
+                            <span data-i18n="link.github">Voir sur GitHub</span>
                         </a>
                     </div>
                 </div>
@@ -382,8 +399,8 @@
             <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl flex flex-col" data-category="developpement">
                 <img src="screenshot-terminal.jpeg" alt="Illustration Terminal Portfolio" class="w-full h-48 object-cover">
                 <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-2xl font-bold text-bleu-fonce mb-3">Terminal Portfolio</h3>
-                    <p class="text-gray-700 mb-4 flex-grow">
+                    <h3 class="text-2xl font-bold text-bleu-fonce mb-3" data-i18n="proj.terminal.title">Terminal Portfolio</h3>
+                    <p class="text-gray-700 mb-4 flex-grow" data-i18n="proj.terminal.desc">
                         Portfolio interactif simulant une interface en ligne de commande (CLI). Une expérience utilisateur originale permettant de découvrir mon profil via des commandes shell simulées dans le navigateur.
                     </p>
                     <div class="mb-6">
@@ -394,11 +411,11 @@
                     <div class="mt-auto flex flex-wrap gap-3">
                         <a href="https://github.com/taguianas/terminal-portfolio" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-bleu-moyen font-semibold hover:text-rouge-accent transition-colors">
                             <svg class="w-5 h-5 mr-2"><use href="#icon-github"></use></svg>
-                            Voir sur GitHub
+                            <span data-i18n="link.github">Voir sur GitHub</span>
                         </a>
                         <a href="https://terminal-portfolio-plum-eta.vercel.app" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-bleu-moyen font-semibold hover:text-rouge-accent transition-colors">
                             <svg class="w-5 h-5 mr-2"><use href="#icon-link"></use></svg>
-                            Voir la Démo
+                            <span data-i18n="link.demo">Voir la Démo</span>
                         </a>
                     </div>
                 </div>
@@ -408,8 +425,8 @@
             <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl flex flex-col" data-category="developpement cybersecurite">
                 <img src="screenshot-encryption.jpeg" alt="Illustration Encryption App" class="w-full h-48 object-cover">
                 <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-2xl font-bold text-bleu-fonce mb-3">Encryption App</h3>
-                    <p class="text-gray-700 mb-4 flex-grow">
+                    <h3 class="text-2xl font-bold text-bleu-fonce mb-3" data-i18n="proj.encryption.title">Encryption App</h3>
+                    <p class="text-gray-700 mb-4 flex-grow" data-i18n-html="proj.encryption.desc">
                         Application sécurisée de chiffrement et déchiffrement de données. Implémentation d'algorithmes cryptographiques (<strong>AES-GCM</strong> & <strong>RSA-OAEP</strong>) pour assurer la confidentialité et l'intégrité des informations sensibles.
                     </p>
                     <div class="mb-6">
@@ -421,11 +438,11 @@
                     <div class="mt-auto flex flex-wrap gap-3">
                         <a href="https://github.com/taguianas/encryption-app" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-bleu-moyen font-semibold hover:text-rouge-accent transition-colors">
                             <svg class="w-5 h-5 mr-2"><use href="#icon-github"></use></svg>
-                            Voir sur GitHub
+                            <span data-i18n="link.github">Voir sur GitHub</span>
                         </a>
                         <a href="https://securecrypt-app.onrender.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-bleu-moyen font-semibold hover:text-rouge-accent transition-colors">
                             <svg class="w-5 h-5 mr-2"><use href="#icon-link"></use></svg>
-                            Voir la Démo
+                            <span data-i18n="link.demo">Voir la Démo</span>
                         </a>
                     </div>
                 </div>
@@ -438,8 +455,8 @@
                     En cours
                 </div>
                 <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-2xl font-bold text-bleu-fonce mb-3">Scripts d'Automatisation</h3>
-                    <p class="text-gray-700 mb-4 flex-grow">
+                    <h3 class="text-2xl font-bold text-bleu-fonce mb-3" data-i18n="proj.scripts.title">Scripts d'Automatisation</h3>
+                    <p class="text-gray-700 mb-4 flex-grow" data-i18n-html="proj.scripts.desc">
                         Collection de scripts Python, Bash et PowerShell pour automatiser les tâches d'administration système sur <strong>Windows et Linux</strong> : gestion des utilisateurs, sauvegardes incrémentielles, et surveillance de services réseaux.
                     </p>
                     <div class="mb-6">
@@ -452,7 +469,7 @@
                     <div class="mt-auto">
                         <a href="https://github.com/taguianas/Admin-script" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-bleu-moyen font-semibold hover:text-rouge-accent transition-colors">
                             <svg class="w-5 h-5 mr-2"><use href="#icon-github"></use></svg>
-                            Voir sur GitHub
+                            <span data-i18n="link.github">Voir sur GitHub</span>
                         </a>
                          <div class="absolute top-2 right-2 bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider shadow-md">
                         En cours
@@ -465,8 +482,8 @@
             <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl flex flex-col" data-category="developpement">
                 <img src="screenshot-d4g.jpeg" alt="Illustration projet D4G" class="w-full h-48 object-cover">
                 <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-2xl font-bold text-bleu-fonce mb-3">API de Résumé Éco-Conçue (D4G)</h3>
-                    <p class="text-gray-700 mb-4 flex-grow">
+                    <h3 class="text-2xl font-bold text-bleu-fonce mb-3" data-i18n="proj.d4g.title">API de Résumé Éco-Conçue (D4G)</h3>
+                    <p class="text-gray-700 mb-4 flex-grow" data-i18n="proj.d4g.desc">
                         Contribution technique majeure au projet Design4Green (ESAIP). Développement d'une API Flask (Python) pour le résumé de texte via un modèle ML (Transformers). Implémentation de techniques d'optimisation (Pruning, SVD, Quantization INT8) et mesure d'impact (CodeCarbon, psutil).
                     </p>
                     <div class="mb-6">
@@ -479,7 +496,7 @@
                     <div class="mt-auto">
                         <a href="https://github.com/Merlycia/D4G" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-bleu-moyen font-semibold hover:text-rouge-accent transition-colors">
                             <svg class="w-5 h-5 mr-2"><use href="#icon-github"></use></svg>
-                            Voir sur GitHub
+                            <span data-i18n="link.github">Voir sur GitHub</span>
                         </a>
                     </div>
                 </div>
@@ -489,8 +506,8 @@
             <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl flex flex-col" data-category="developpement">
                 <img src="screenshot-portfolio.jpeg" alt="Illustration projet Portfolio" class="w-full h-48 object-cover">
                 <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-2xl font-bold text-bleu-fonce mb-3">Site Web Portfolio (Ce site)</h3>
-                    <p class="text-gray-700 mb-4 flex-grow">
+                    <h3 class="text-2xl font-bold text-bleu-fonce mb-3" data-i18n="proj.portfolio.title">Site Web Portfolio (Ce site)</h3>
+                    <p class="text-gray-700 mb-4 flex-grow" data-i18n-html="proj.portfolio.desc">
                         Développement de mon portfolio personnel pour présenter mes compétences et projets. Conçu avec <strong>HTML5</strong> sémantique et stylisé avec le framework <strong>Tailwind CSS</strong> pour un design moderne et adaptatif.
                     </p>
                     <div class="mb-6">
@@ -501,11 +518,11 @@
                     <div class="mt-auto flex flex-wrap gap-3">
                         <a href="https://github.com/taguianas/taguianas.github.io" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-bleu-moyen font-semibold hover:text-rouge-accent transition-colors">
                             <svg class="w-5 h-5 mr-2"><use href="#icon-github"></use></svg>
-                            Voir sur GitHub
+                            <span data-i18n="link.github">Voir sur GitHub</span>
                         </a>
                         <a href="https://taguianas.github.io/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-bleu-moyen font-semibold hover:text-rouge-accent transition-colors">
                             <svg class="w-5 h-5 mr-2"><use href="#icon-link"></use></svg>
-                            Voir la Démo
+                            <span data-i18n="link.demo">Voir la Démo</span>
                         </a>
                     </div>
                 </div>
@@ -522,7 +539,7 @@
                 <a href="https://www.linkedin.com/in/anas-tagui-7b0599241/" target="_blank" rel="noopener noreferrer" class="hover:text-bleu-clair transition-colors" title="LinkedIn"><svg class="w-8 h-8"><use href="#icon-linkedin"></use></svg></a>
                 <a href="https://github.com/taguianas" target="_blank" rel="noopener noreferrer" class="hover:text-bleu-clair transition-colors" title="GitHub"><svg class="w-8 h-8"><use href="#icon-github"></use></svg></a>
             </div>
-            <p>&copy; 2025 Anas TAGUI. Tous droits réservés.</p>
+            <p data-i18n="footer.rights">&copy; 2025 Anas TAGUI. Tous droits réservés.</p>
         </div>
     </footer>
 
@@ -601,5 +618,13 @@
     <button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Retour en haut" title="Retour en haut" class="fixed bottom-6 right-6 z-50 w-11 h-11 rounded-full bg-bleu-moyen text-white shadow-lg flex items-center justify-center hover:bg-bleu-fonce transition-colors">
         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
     </button>
+    <script>
+        window.addEventListener('scroll', function() {
+            var scrolled = document.documentElement.scrollTop || document.body.scrollTop;
+            var total = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            document.getElementById('scroll-bar').style.width = (total > 0 ? (scrolled / total * 100) : 0) + '%';
+        });
+    </script>
+    <script src="i18n.js"></script>
 </body>
 </html>

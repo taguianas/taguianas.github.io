@@ -1,5 +1,5 @@
 /* ============================================================
-   i18n.js – FR / EN translations + toggle logic
+   i18n.js - FR / EN translations + toggle logic
    Usage: add data-i18n="key" (text), data-i18n-html="key" (innerHTML),
           data-i18n-placeholder="key" (placeholder attr) to elements.
           Call setLang('fr') or setLang('en') from any page.
@@ -16,7 +16,7 @@ window.translations = {
     'footer.rights'   : '© 2025 Anas TAGUI. Tous droits réservés.',
 
     /* --- INDEX --- */
-    'hero.badge'      : 'Disponible pour alternance \u2014 Septembre 2025',
+    'hero.badge'      : 'Disponible pour alternance - Septembre 2025',
     'hero.cv'         : 'Télécharger mon CV',
     'hero.projects'   : 'Voir mes projets',
     'hero.description': 'Actuellement en 4ème année du cycle ingénieur, je recherche activement une <strong>alternance</strong>. Ayant un vif intérêt pour les défis techniques en cybersécurité et réseaux, je suis déterminé à m\'investir pour contribuer à la sécurité de vos projets.',
@@ -76,19 +76,19 @@ window.translations = {
     'parcours.langs'    : 'Langues',
     'parcours.train'    : 'Auto-formation',
 
-    'exp1.date'   : 'Juillet 2025 \u2013 Août 2025 (2 mois)',
+    'exp1.date'   : 'Juillet 2025 - Août 2025 (2 mois)',
     'exp1.title'  : 'Technicien Fibre Optique (Stage)',
     'exp1.b1'     : 'Installation et dépannage de réseaux fibre optique (FTTH) sur le terrain.',
     'exp1.b2'     : 'Configuration des équipements et support technique auprès des clients.',
-    'exp2.date'   : 'Juin 2023 \u2013 Septembre 2023 (4 mois)',
+    'exp2.date'   : 'Juin 2023 - Septembre 2023 (4 mois)',
     'exp2.title'  : 'Technicien Informatique (Stage)',
     'exp2.b1'     : 'Installation et configuration des systèmes d\'exploitation et des logiciels.',
     'exp2.b2'     : 'Formatage et optimisation des performances des ordinateurs.',
 
-    'edu1.date'   : '2024 \u2013 2027 (en cours)',
+    'edu1.date'   : '2024 - 2027 (en cours)',
     'edu1.title'  : 'Cycle d\'Ingénieur Informatique',
     'edu1.spec'   : 'Spécialisation en Cybersécurité et Réseaux.',
-    'edu2.date'   : 'Février 2025 \u2013 Juillet 2025',
+    'edu2.date'   : 'Février 2025 - Juillet 2025',
     'edu2.title'  : 'Échange Universitaire',
     'edu2.school' : 'Politechnika Warszawska, Varsovie, Pologne',
     'edu2.desc'   : 'Focus sur l\'informatique et la sécurité de l\'information.',
@@ -121,7 +121,7 @@ window.translations = {
     /* --- BÉNÉVOLAT --- */
     'benev.title'     : 'Mes Engagements',
     'benev.sub'       : 'Allier compétences techniques et engagement citoyen.',
-    'benev.app.title' : 'Application Web \u2013 Snooker Shoot-Out',
+    'benev.app.title' : 'Application Web - Snooker Shoot-Out',
     'benev.app.desc'  : 'Développement d\'une application web en React.js pour le club de snooker (affilié FFB) afin de gérer les tournois "Shoot-Out". L\'outil gère le chronomètre de match et de tir, le score, et les fautes en temps réel avec une interface dynamique.',
     'benev.app.link'  : 'Voir l\'application',
     'benev.cop.title' : 'Bénévole Distribution Alimentaire',
@@ -164,7 +164,7 @@ window.translations = {
     'footer.rights'   : '© 2025 Anas TAGUI. All rights reserved.',
 
     /* --- INDEX --- */
-    'hero.badge'      : 'Available for apprenticeship \u2014 September 2025',
+    'hero.badge'      : 'Available for apprenticeship - September 2025',
     'hero.cv'         : 'Download my CV',
     'hero.projects'   : 'View my projects',
     'hero.description': 'Currently in my 4th year of engineering school, I am actively looking for an <strong>apprenticeship</strong>. With a keen interest in cybersecurity and networking challenges, I am determined to contribute to the security of your projects.',
@@ -224,19 +224,19 @@ window.translations = {
     'parcours.langs'  : 'Languages',
     'parcours.train'  : 'Self-Training',
 
-    'exp1.date'   : 'July 2025 \u2013 August 2025 (2 months)',
+    'exp1.date'   : 'July 2025 - August 2025 (2 months)',
     'exp1.title'  : 'Fiber Optic Technician (Internship)',
     'exp1.b1'     : 'Installation and troubleshooting of fiber optic networks (FTTH) in the field.',
     'exp1.b2'     : 'Equipment configuration and technical support for customers.',
-    'exp2.date'   : 'June 2023 \u2013 September 2023 (4 months)',
+    'exp2.date'   : 'June 2023 - September 2023 (4 months)',
     'exp2.title'  : 'IT Technician (Internship)',
     'exp2.b1'     : 'Installation and configuration of operating systems and software.',
     'exp2.b2'     : 'Formatting and performance optimization of computers.',
 
-    'edu1.date'   : '2024 \u2013 2027 (ongoing)',
+    'edu1.date'   : '2024 - 2027 (ongoing)',
     'edu1.title'  : 'Computer Engineering Degree',
     'edu1.spec'   : 'Specialization in Cybersecurity and Networks.',
-    'edu2.date'   : 'February 2025 \u2013 July 2025',
+    'edu2.date'   : 'February 2025 - July 2025',
     'edu2.title'  : 'University Exchange Program',
     'edu2.school' : 'Politechnika Warszawska, Warsaw, Poland',
     'edu2.desc'   : 'Focus on computer science and information security.',
@@ -269,7 +269,7 @@ window.translations = {
     /* --- BÉNÉVOLAT --- */
     'benev.title'     : 'My Commitments',
     'benev.sub'       : 'Combining technical skills with civic engagement.',
-    'benev.app.title' : 'Web App \u2013 Snooker Shoot-Out',
+    'benev.app.title' : 'Web App - Snooker Shoot-Out',
     'benev.app.desc'  : 'Development of a React.js web application for the snooker club (affiliated with FFB) to manage "Shoot-Out" tournaments. The tool handles match and shot timers, score, and fouls in real time with a dynamic interface.',
     'benev.app.link'  : 'View App',
     'benev.cop.title' : 'Food Distribution Volunteer',
