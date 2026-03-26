@@ -79,8 +79,8 @@
         <symbol id="icon-github" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></symbol>
         <symbol id="icon-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></symbol>
         <symbol id="icon-graduation" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3.33 1.67 6.67 1.67 10 0v-5"></path></symbol>
-        <!-- Icône TryHackMe ajoutée -->
         <symbol id="icon-tryhackme" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.72 11.04c0-5.22-4.24-9.46-9.46-9.46S2.8 5.82 2.8 11.04s4.24 9.46 9.46 9.46 9.46-4.24 9.46-9.46z"/><path d="M16.38 15.12H7.62l4.38-6.72 4.38 6.72z"/></symbol>
+        <symbol id="icon-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"></circle><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"></path></symbol>
     </svg>
 
     <!-- Header / Navigation -->
@@ -205,6 +205,109 @@
                         </div>
 
                     </div>
+                </section>
+
+                <!-- Section Certifications -->
+                <section class="mt-16">
+                    <h2 class="flex items-center text-3xl font-bold text-bleu-fonce mb-8">
+                        <svg class="w-8 h-8 mr-3 text-bleu-moyen"><use href="#icon-badge"></use></svg>
+                        <span data-i18n="parcours.certs">Certifications</span>
+                    </h2>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+                        <!-- TryHackMe: Cyber Security 101 -->
+                        <a href="https://tryhackme.com/certificate/THM-NRRZMH6WWM" target="_blank" rel="noopener noreferrer" class="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md hover:border-bleu-clair transition-all group">
+                            <div class="w-12 h-12 rounded-lg bg-red-100 flex items-center justify-center flex-shrink-0">
+                                <span class="text-red-800 font-bold text-xs">THM</span>
+                            </div>
+                            <div class="min-w-0">
+                                <p class="font-bold text-bleu-fonce text-sm leading-snug">Cyber Security 101</p>
+                                <p class="text-xs text-gray-500 mt-0.5">TryHackMe · févr. 2026</p>
+                                <span class="inline-block mt-1.5 text-xs text-bleu-moyen font-semibold group-hover:text-rouge-accent transition-colors" data-i18n="cert.link">Voir le diplôme</span>
+                            </div>
+                        </a>
+
+                        <!-- TryHackMe: Pre Security -->
+                        <a href="https://tryhackme.com/certificate/THM-Q1MHF8847U" target="_blank" rel="noopener noreferrer" class="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md hover:border-bleu-clair transition-all group">
+                            <div class="w-12 h-12 rounded-lg bg-red-100 flex items-center justify-center flex-shrink-0">
+                                <span class="text-red-800 font-bold text-xs">THM</span>
+                            </div>
+                            <div class="min-w-0">
+                                <p class="font-bold text-bleu-fonce text-sm leading-snug">Pre Security</p>
+                                <p class="text-xs text-gray-500 mt-0.5">TryHackMe · sept. 2025</p>
+                                <span class="inline-block mt-1.5 text-xs text-bleu-moyen font-semibold group-hover:text-rouge-accent transition-colors" data-i18n="cert.link">Voir le diplôme</span>
+                            </div>
+                        </a>
+
+                        <!-- Google Cybersecurity -->
+                        <a href="https://www.coursera.org/account/accomplishments/professional-cert/DV1NUTPUA3MJ" target="_blank" rel="noopener noreferrer" class="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md hover:border-bleu-clair transition-all group">
+                            <div class="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0">
+                                <span class="text-blue-800 font-bold text-xs">GGL</span>
+                            </div>
+                            <div class="min-w-0">
+                                <p class="font-bold text-bleu-fonce text-sm leading-snug">Google Cybersecurity</p>
+                                <p class="text-xs text-gray-500 mt-0.5">Google · août 2025</p>
+                                <span class="inline-block mt-1.5 text-xs text-bleu-moyen font-semibold group-hover:text-rouge-accent transition-colors" data-i18n="cert.link">Voir le diplôme</span>
+                            </div>
+                        </a>
+
+                        <!-- ANSSI SecNumAcadémie -->
+                        <div class="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border border-gray-100">
+                            <div class="w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center flex-shrink-0">
+                                <span class="text-purple-800 font-bold text-xs">ANSSI</span>
+                            </div>
+                            <div class="min-w-0">
+                                <p class="font-bold text-bleu-fonce text-sm leading-snug">MOOC SecNumAcadémie</p>
+                                <p class="text-xs text-gray-500 mt-0.5">ANSSI · juil. 2025</p>
+                            </div>
+                        </div>
+
+                        <!-- LinkedIn Learning -->
+                        <div class="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border border-gray-100">
+                            <div class="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0">
+                                <span class="text-blue-800 font-bold text-xs">LI</span>
+                            </div>
+                            <div class="min-w-0">
+                                <p class="font-bold text-bleu-fonce text-sm leading-snug">Aperçu des menaces de cybersécurité</p>
+                                <p class="text-xs text-gray-500 mt-0.5">LinkedIn Learning</p>
+                            </div>
+                        </div>
+
+                        <!-- Cisco: Networking Basics -->
+                        <div class="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border border-gray-100">
+                            <div class="w-12 h-12 rounded-lg bg-teal-100 flex items-center justify-center flex-shrink-0">
+                                <span class="text-teal-800 font-bold text-xs">CISCO</span>
+                            </div>
+                            <div class="min-w-0">
+                                <p class="font-bold text-bleu-fonce text-sm leading-snug">Networking Basics</p>
+                                <p class="text-xs text-gray-500 mt-0.5">Cisco · janv. 2025</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Formations en cours -->
+                    <h3 class="flex items-center text-xl font-bold text-bleu-fonce mt-10 mb-4">
+                        <span class="relative flex h-2.5 w-2.5 mr-2.5">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-yellow-400"></span>
+                        </span>
+                        <span data-i18n="cert.wip">Formations en cours</span>
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border border-yellow-200">
+                            <div class="w-12 h-12 rounded-lg bg-yellow-100 flex items-center justify-center flex-shrink-0">
+                                <span class="text-yellow-800 font-bold text-xs">CEH</span>
+                            </div>
+                            <div class="min-w-0">
+                                <p class="font-bold text-bleu-fonce text-sm leading-snug" data-i18n="cert.ceh.name">CEH - Certified Ethical Hacker</p>
+                                <p class="text-xs text-gray-500 mt-0.5" data-i18n="cert.ceh.org">EC-Council</p>
+                                <span class="inline-block mt-1.5 px-2 py-0.5 bg-yellow-100 text-yellow-800 text-xs font-semibold rounded-full" data-i18n="cert.inprog">En cours</span>
+                            </div>
+                        </div>
+                    </div>
+
                 </section>
             </div>
 

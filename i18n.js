@@ -152,6 +152,14 @@ window.translations = {
     'form.success'       : 'Message envoyé ! Je vous répondrai dans les plus brefs délais.',
     'form.error'         : 'Erreur lors de l\'envoi. Contactez-moi directement par email.',
     'copy.ok'            : 'Copié !',
+
+    /* --- CERTIFICATIONS --- */
+    'parcours.certs'  : 'Certifications',
+    'cert.link'       : 'Voir le diplôme',
+    'cert.wip'        : 'Formations en cours',
+    'cert.inprog'     : 'En cours',
+    'cert.ceh.name'   : 'CEH - Certified Ethical Hacker',
+    'cert.ceh.org'    : 'EC-Council (préparation via TryHackMe)',
   },
 
   en: {
@@ -300,6 +308,14 @@ window.translations = {
     'form.success'       : 'Message sent! I will reply as soon as possible.',
     'form.error'         : 'Error sending message. Contact me directly by email.',
     'copy.ok'            : 'Copied!',
+
+    /* --- CERTIFICATIONS --- */
+    'parcours.certs'  : 'Certifications',
+    'cert.link'       : 'View certificate',
+    'cert.wip'        : 'In Progress',
+    'cert.inprog'     : 'In progress',
+    'cert.ceh.name'   : 'CEH - Certified Ethical Hacker',
+    'cert.ceh.org'    : 'EC-Council (preparation via TryHackMe)',
   }
 };
 
