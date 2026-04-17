@@ -16,7 +16,7 @@ window.translations = {
     'footer.rights'   : '© 2025 Anas TAGUI. Tous droits réservés.',
 
     /* --- INDEX --- */
-    'hero.badge'      : 'Disponible pour alternance - Septembre 2025',
+    'hero.badge'      : 'Disponible pour alternance - Septembre 2026',
     'hero.cv'         : 'Télécharger mon CV',
     'hero.projects'   : 'Voir mes projets',
     'hero.description': 'Actuellement en 4ème année du cycle ingénieur, je recherche activement une <strong>alternance</strong>. Ayant un vif intérêt pour les défis techniques en cybersécurité et réseaux, je suis déterminé à m\'investir pour contribuer à la sécurité de vos projets.',
